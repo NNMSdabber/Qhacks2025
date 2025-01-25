@@ -473,6 +473,20 @@ namespace QHacks2025
                     break;
 
                 case SELECT:
+
+                    switch (curMenuNum)
+                    {
+                        case SONIC_LEVEL_DATA_IDX:
+                            sonicBtn.DrawButton(spriteBatch, Color.Black);
+                            break;
+                        case ICIRRUS_LEVEL_DATA_IDX:
+                            icirrusBtn.DrawButton(spriteBatch, Color.Black);
+                            break;
+                        case CHUG_JUG_LEVEL_DATA_IDX:
+                            chugBtn.DrawButton(spriteBatch, Color.Black);
+                            break;
+                    }
+                    
                     sonicBtn.DrawButton(spriteBatch, Color.Purple);
                     icirrusBtn.DrawButton(spriteBatch, Color.Purple);
                     chugBtn.DrawButton(spriteBatch, Color.Purple);
