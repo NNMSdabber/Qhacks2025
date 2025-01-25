@@ -47,7 +47,8 @@ namespace QHacks2025
         private const byte START_FRAME = 0;
         private const byte IDLE_FRAME = 0;
         private const int ANIM_DURATION_MOVE = 900;
-        private Vector2 amyPos = new Vector2(700, 300);
+        private Vector2[] amyPosList = new Vector2[5];
+        private Vector2 amyPos;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -167,6 +168,12 @@ namespace QHacks2025
             icirrusBtn = new Button(arrowImg[0], 500, 400, "Icirrus City");
             chugBtn = new Button(arrowImg[0], 900, 400, "Chug Jug With You");
             backToStartBtn = new Button(arrowImg[0],500,400,"Press K to return to menu");
+            
+            amyPosList[0] = new Vector2(gridBgRec.X + 175 ,  gridBgRec.Y + 175);
+            amyPosList[1] = new Vector2(amyPosList[0].X - 200, amyPosList[0].Y);
+            amyPosList[2] = new Vector2(amyPosList[0].X, amyPosList[0].Y - 200);
+            amyPosList[3] = new Vector2(amyPosList[0].X + 200, amyPosList[0].Y);
+            amyPosList[4] = new Vector2(amyPosList[0].X, amyPosList[0].Y + 200);
 
             for (int i = 0; i < 30; i++)
             {
@@ -312,6 +319,7 @@ namespace QHacks2025
                         
                        if(kb.IsKeyDown(W_KEY) && !prevkb.IsKeyDown(W_KEY) && arrow.GetDirection() == UP)
                        {
+                           amyAnim.TranslateTo((int)amyPosList[1].X, (int)amyPosList[1].Y);
                             if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                             {
                                 score += 50;
@@ -322,6 +330,7 @@ namespace QHacks2025
                        }
                        else if (kb.IsKeyDown(A_KEY) && !prevkb.IsKeyDown(A_KEY) && arrow.GetDirection() == LEFT)
                        {
+                           amyAnim.TranslateTo((int)amyPosList[2].X, (int)amyPosList[2].Y);
                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
                                streak++;
@@ -332,6 +341,7 @@ namespace QHacks2025
                         }
                        else if (kb.IsKeyDown(S_KEY) && !prevkb.IsKeyDown(S_KEY) && arrow.GetDirection() == DOWN)
                        {
+                           amyAnim.TranslateTo((int)amyPosList[3].X, (int)amyPosList[3].Y);
                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
                                 streak++;
@@ -342,12 +352,40 @@ namespace QHacks2025
                         }
                        else if (kb.IsKeyDown(D_KEY) && !prevkb.IsKeyDown(D_KEY) && arrow.GetDirection() == RIGHT)
                        {
+
+                           amyAnim.TranslateTo((int)amyPosList[4].X, (int)amyPosList[4].Y);
                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
                                arrow.SetIsAvailable(false);
                                score += 50;
                                streak++;
                            }
+                       }
+                       
+                       if(kb.IsKeyDown(W_KEY))
+                       {
+                           amyAnim.TranslateTo((int)amyPosList[2].X, (int)amyPosList[2].Y);
+
+                       }
+                       else if (kb.IsKeyDown(A_KEY))
+                       {
+                           amyAnim.TranslateTo((int)amyPosList[1].X, (int)amyPosList[1].Y);
+
+                        }
+                       else if (kb.IsKeyDown(S_KEY))
+                       {
+                           amyAnim.TranslateTo((int)amyPosList[4].X, (int)amyPosList[4].Y);
+
+
+                        }
+                       else if (kb.IsKeyDown(D_KEY))
+                       {
+
+                           amyAnim.TranslateTo((int)amyPosList[3].X, (int)amyPosList[3].Y);
+                       }
+                       else
+                       {
+                           amyAnim.TranslateTo((int)amyPosList[0].X, (int)amyPosList[0].Y);
                        }
                     }
 
@@ -524,8 +562,8 @@ namespace QHacks2025
                     {
                         arrow.Draw(spriteBatch);
                     }
-
-                    amyAnim.Draw(spriteBatch, bgColor, SpriteEffects.None);
+                    amyAnim.Draw(spriteBatch, Color.White, SpriteEffects.None);
+                    amyAnim.Draw(spriteBatch, bgColor * 0.65f, SpriteEffects.None);
                     
                     spriteBatch.Draw(barImg,collisionRec,Color.White * 0.5f);
                     break;
