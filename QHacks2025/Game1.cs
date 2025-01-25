@@ -39,19 +39,24 @@ namespace QHacks2025
         public const int MENU = 0;
         public const int GAME_PLAY = 1;
         public const int END = 2;
+        public const int SELECT = 3;
+        public const int RESULTS = 4;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
         public int gameplayState = GAME_PLAY;
+        public static Random rng = new Random();
+
+        private Button startBtn;
 
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
         private Arrow[] levelSonic = new Arrow[36];
         private Arrow[] levelPokemon = new Arrow[15];
 
-        
-        public static Random rng = new Random();
+        public static SpriteFont labelFont;
+        public static SpriteFont titleFont;
 
         private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,30);
 
@@ -60,8 +65,12 @@ namespace QHacks2025
 
         private int score = 0;
 
-        private Song sonic;
-        private Song pokemon;
+        public MouseState mouse;
+        public MouseState mousePrev;
+
+        private static Song menuMusic;
+        private static Song sonic;
+        private static Song pokemon;
 
 
         public Game1()
@@ -107,7 +116,14 @@ namespace QHacks2025
 
             sonic = Content.Load<Song>("Audio/Music/Sonic");
             pokemon = Content.Load<Song>("Audio/Music/icirrus");
-            // TODO: use this.Content to load your game content here
+
+            labelFont = Content.Load<SpriteFont>("Fonts/LabelFont");
+            titleFont = Content.Load<SpriteFont>("Fonts/TitleFont");
+
+            menuMusic = Content.Load<Song>("Audio/Music/geometry");
+            MediaPlayer.Play(menuMusic);
+
+            startBtn = new Button(arrowImg[0], 400, 400, "Start");
 
             for (int i = 0; i < 30; i++)
             {
@@ -117,7 +133,7 @@ namespace QHacks2025
             SetUpSonic();
             SetUpPokemon();
 
-            MediaPlayer.Play(pokemon);
+            //MediaPlayer.Play(pokemon);
 
         }
 
@@ -147,8 +163,14 @@ namespace QHacks2025
             switch (gameplayState) 
             {
                 case MENU:
+                    if (startBtn.rec.Contains(mouse.Position.ToVector2()))
+                    {
+                        if (IsMouseButtonPressed(0, mouse) && !IsMouseButtonPressed(0, mousePrev))
+                        {
 
-                break;
+                        }
+                    }
+                    break;
 
                 case GAME_PLAY:
 
@@ -303,7 +325,9 @@ namespace QHacks2025
             switch (gameplayState)
             {
                 case MENU:
-                    
+                    startBtn.DrawButton(spriteBatch, Color.Purple);
+
+                    spriteBatch.DrawString(titleFont, "Robt QHacks 2025", Vector2.Zero, Color.Red);
                     break;
 
                 case GAME_PLAY:
@@ -326,6 +350,29 @@ namespace QHacks2025
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+
+        //Pre: The mouse button number and the state of the mouse
+        //Post: If the mouse button is pressed
+        //Desc: Checks if a sepcific mouse button is pressed
+        public static bool IsMouseButtonPressed(byte index, MouseState mouse)
+        {
+            //Chooses which mouse button to check based on the index
+            switch (index)
+            {
+                case 0:
+                    //Returns if the left mouse button is pressed
+                    return mouse.LeftButton == ButtonState.Pressed;
+
+                case 1:
+                    //Returns if the right mouse button is pressed
+                    return mouse.RightButton == ButtonState.Pressed;
+
+                default:
+                    //Throws an exception if no valid index was given
+                    throw new EntryPointNotFoundException("Invalid index passed.");
+            }
         }
     }
 }
