@@ -102,6 +102,8 @@ namespace QHacks2025
         private static Song pokemon;
         private static Song chugJugWithYou;
 
+        private Texture2D[] backgrounds = new Texture2D[3];
+
 
         public Game1()
         {
@@ -175,6 +177,10 @@ namespace QHacks2025
             amyPosList[3] = new Vector2(amyPosList[0].X + 200, amyPosList[0].Y);
             amyPosList[4] = new Vector2(amyPosList[0].X, amyPosList[0].Y + 200);
 
+            backgrounds[SONIC_LEVEL_DATA_IDX] = Content.Load<Texture2D>("Images/Sonic");
+            backgrounds[ICIRRUS_LEVEL_DATA_IDX] = Content.Load<Texture2D>("Images/blackandwhite");
+            backgrounds[CHUG_JUG_LEVEL_DATA_IDX] = Content.Load<Texture2D>("Images/chugjug");
+            
             for (int i = 0; i < 30; i++)
             {
                 arrows.AddLast(new Arrow(new Vector2(100,0-200*i),8,rng.Next(0,4)));
@@ -537,12 +543,15 @@ namespace QHacks2025
                     switch (curMenuNum)
                     {
                         case SONIC_LEVEL_DATA_IDX:
+                            spriteBatch.Draw(backgrounds[SONIC_LEVEL_DATA_IDX],new Rectangle(0,0,SCREEN_WIDTH,SCREEN_HEIGHT),Color.White);
                             sonicBtn.DrawButton(spriteBatch, Color.Black);
                             break;
                         case ICIRRUS_LEVEL_DATA_IDX:
+                            spriteBatch.Draw(backgrounds[ICIRRUS_LEVEL_DATA_IDX],new Rectangle(0,0,SCREEN_WIDTH,SCREEN_HEIGHT),Color.White);
                             icirrusBtn.DrawButton(spriteBatch, Color.Black);
                             break;
                         case CHUG_JUG_LEVEL_DATA_IDX:
+                            spriteBatch.Draw(backgrounds[CHUG_JUG_LEVEL_DATA_IDX],new Rectangle(0,0,SCREEN_WIDTH,SCREEN_HEIGHT),Color.White);
                             chugBtn.DrawButton(spriteBatch, Color.Black);
                             break;
                     }

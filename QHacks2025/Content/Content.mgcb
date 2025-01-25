@@ -44,12 +44,22 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/LabelFont.spritefont
 
+#begin Fonts/LabelFont.ttf
+/importer:
+/processor:
+/build:Fonts/LabelFont.ttf
+
 #begin Fonts/TitleFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Fonts/TitleFont.spritefont
+
+#begin Fonts/TitleFont.ttf
+/importer:
+/processor:
+/build:Fonts/TitleFont.ttf
 
 #begin Images/Arrows/Arrow.png
 /importer:TextureImporter
@@ -135,6 +145,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/bg.png
 
+#begin Images/blackandwhite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/blackandwhite.png
+
 #begin Images/blue-preview.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -219,6 +241,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/Characters/DancingGirl/snap.png
 
+#begin Images/chugjug.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/chugjug.jpg
+
 #begin Images/gridBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -230,4 +264,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/gridBG.png
+
+#begin Images/sonic.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/sonic.png
 
