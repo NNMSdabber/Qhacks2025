@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Fonts/LabelFont.spritefont</SourceFile>
-  <SourceTime>2025-01-25T12:31:14-05:00</SourceTime>
-  <DestFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Fonts/LabelFont.xnb</DestFile>
-  <DestTime>2025-01-25T17:01:29.8352396-05:00</DestTime>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Fonts/LabelFont.spritefont</SourceFile>
+  <SourceTime>2025-01-25T17:02:59.7805744-05:00</SourceTime>
+  <DestFile>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Fonts/LabelFont.xnb</DestFile>
+  <DestTime>2025-01-25T18:28:19.7424233-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
-  <ImporterTime>2023-11-11T18:28:59.7452565-05:00</ImporterTime>
+  <ImporterTime>2024-08-16T13:05:56-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
-  <ProcessorTime>2023-11-11T18:28:59.7452565-05:00</ProcessorTime>
+  <ProcessorTime>2024-08-16T13:05:56-04:00</ProcessorTime>
   <Parameters>
     <Key>PremultiplyAlpha</Key>
     <Value>True</Value>

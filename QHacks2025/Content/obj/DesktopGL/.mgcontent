@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Profile>Reach</Profile>
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/chug_jug.mp3</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/geometry.mp3</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/icirrus.mp3</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/sonic.mp3</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Fonts/LabelFont.spritefont</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Fonts/TitleFont.spritefont</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/Arrow.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowDown.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowUp.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/LeftArrow.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/RightArrow.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/bar.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/bg.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/blue-preview.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/amy.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/balancing.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/hips.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/skip.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/slide.png</File>
-    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/snap.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/chug_jug.mp3</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/geometry.mp3</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/icirrus.mp3</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/sonic.mp3</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Fonts/LabelFont.spritefont</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Fonts/TitleFont.spritefont</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Arrows/Arrow.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowDown.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowUp.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Arrows/LeftArrow.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Arrows/RightArrow.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/bar.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/bg.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/blackandwhite.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/blue-preview.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Characters/amy.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/balancing.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/hips.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/skip.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/slide.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/snap.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/chugjug.jpg</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/gridBG.png</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/sonic.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
