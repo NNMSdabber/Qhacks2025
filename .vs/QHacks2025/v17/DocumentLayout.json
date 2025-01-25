@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{E69700B7-9108-45CE-8A8B-1D2B93AE4DA5}|QHacks2025\\QHacks2025.csproj|c:\\users\\nmseg\\onedrive\\desktop\\qhacks25\\num2\\qhacks2025\\qhacks2025\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E69700B7-9108-45CE-8A8B-1D2B93AE4DA5}|QHacks2025\\QHacks2025.csproj|solutionrelative:qhacks2025\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E69700B7-9108-45CE-8A8B-1D2B93AE4DA5}|QHacks2025\\QHacks2025.csproj|C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\qhacks2025\\arrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E69700B7-9108-45CE-8A8B-1D2B93AE4DA5}|QHacks2025\\QHacks2025.csproj|solutionrelative:qhacks2025\\arrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -29,29 +20,8 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Arrow.cs",
-              "DocumentMoniker": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\Arrow.cs",
-              "RelativeDocumentMoniker": "QHacks2025\\Arrow.cs",
-              "ToolTip": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\Arrow.cs",
-              "RelativeToolTip": "QHacks2025\\Arrow.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T02:16:35.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Game1.cs",
-              "DocumentMoniker": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\Game1.cs",
-              "RelativeDocumentMoniker": "QHacks2025\\Game1.cs",
-              "ToolTip": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\Game1.cs",
-              "RelativeToolTip": "QHacks2025\\Game1.cs",
-              "ViewState": "AQIAAIwBAAAAAAAAAAAIwJQBAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T01:58:17.977Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
             }
           ]
         }
