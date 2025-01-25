@@ -65,13 +65,13 @@ void loop() {
   // {
   //   isPressed2 = false;
   // }  if (digitalRead(4) == LOW)
-  {
-    Serial.println("pin 4");
-    Keyboard.press('k');
-    Keyboard.release('k');
-
-
-  }
+  // {
+  //   Serial.println("pin 4");
+  //   Keyboard.press('k');
+  //   Keyboard.release('k');
+  //
+  //
+  // }
   // if (digitalRead(3) == HIGH) 
   // {
   //   isPressed3 = false;
