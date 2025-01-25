@@ -4,25 +4,27 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Audio/Music/chug_jug.mp3</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Audio/Music/geometry.mp3</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Audio/Music/icirrus.mp3</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Audio/Music/sonic.mp3</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Fonts/LabelFont.spritefont</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Fonts/TitleFont.spritefont</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Arrows/Arrow.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowDown.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowUp.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Arrows/LeftArrow.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Arrows/RightArrow.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/blue-preview.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/balancing.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/hips.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/skip.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/slide.png</File>
-    <File>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/snap.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/chug_jug.mp3</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/geometry.mp3</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/icirrus.mp3</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/sonic.mp3</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Fonts/LabelFont.spritefont</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Fonts/TitleFont.spritefont</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/Arrow.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowDown.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/ArrowUp.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/LeftArrow.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/RightArrow.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/bg.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/blue-preview.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/balancing.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/hips.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/skip.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/slide.png</File>
+    <File>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Characters/DancingGirl/snap.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

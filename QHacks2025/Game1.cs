@@ -54,6 +54,10 @@ namespace QHacks2025
         private Button icirrusBtn;
         private Button chugBtn;
 
+        public static Texture2D bg;
+        private Rectangle bgRec = new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        private Color bgColor = new Color(255, 255, 255, 255);
+
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
 
@@ -113,6 +117,8 @@ namespace QHacks2025
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            bg = Content.Load<Texture2D>("Images/bg");
 
             arrowImg[RIGHT] = Content.Load<Texture2D>("Images/Arrows/RightArrow");
             arrowImg[LEFT] = Content.Load<Texture2D>("Images/Arrows/LeftArrow");
@@ -271,6 +277,10 @@ namespace QHacks2025
                     {
                         SetUpChugJug();
                     }
+
+                    bgColor.R += 1;
+                    bgColor.G += 2;
+                    bgColor.B += 3;
                     break;
 
                 case END:
@@ -278,8 +288,6 @@ namespace QHacks2025
                 break;
 
             }
-
-
 
             // TODO: Add your update logic here
 
@@ -378,6 +386,8 @@ namespace QHacks2025
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+
+            spriteBatch.Draw(bg, bgRec, bgColor);
 
             switch (gameplayState)
             {
