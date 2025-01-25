@@ -150,7 +150,7 @@ namespace QHacks2025
             arrowImg[UP] = Content.Load<Texture2D>("Images/Arrows/ArrowUp");
             arrowImg[DOWN] = Content.Load<Texture2D>("Images/Arrows/ArrowDown");
 
-            sonic = Content.Load<Song>("Audio/Music/Sonic");
+            sonic = Content.Load<Song>("Audio/Music/sonic");
             pokemon = Content.Load<Song>("Audio/Music/icirrus");
             chugJugWithYou = Content.Load<Song>("Audio/Music/chug_jug");
 
@@ -177,7 +177,7 @@ namespace QHacks2025
             amyPosList[3] = new Vector2(amyPosList[0].X + 200, amyPosList[0].Y);
             amyPosList[4] = new Vector2(amyPosList[0].X, amyPosList[0].Y + 200);
 
-            backgrounds[SONIC_LEVEL_DATA_IDX] = Content.Load<Texture2D>("Images/Sonic");
+            backgrounds[SONIC_LEVEL_DATA_IDX] = Content.Load<Texture2D>("Images/sonic");
             backgrounds[ICIRRUS_LEVEL_DATA_IDX] = Content.Load<Texture2D>("Images/blackandwhite");
             backgrounds[CHUG_JUG_LEVEL_DATA_IDX] = Content.Load<Texture2D>("Images/chugjug");
             
