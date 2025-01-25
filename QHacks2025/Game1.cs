@@ -53,6 +53,7 @@ namespace QHacks2025
         private Button sonicBtn;
         private Button icirrusBtn;
         private Button chugBtn;
+        private Button backToStartBtn;
 
         public static Texture2D bg;
         private Rectangle bgRec = new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -72,6 +73,7 @@ namespace QHacks2025
         public KeyboardState prevkb = new KeyboardState();
 
         private int score = 0;
+        private int streak = 0;
 
         public MouseState mouse;
         public MouseState mousePrev;
@@ -140,6 +142,7 @@ namespace QHacks2025
             sonicBtn = new Button(arrowImg[0], 100, 400, "Windy Hill");
             icirrusBtn = new Button(arrowImg[0], 500, 400, "Icirrus City");
             chugBtn = new Button(arrowImg[0], 900, 400, "Chug Jug With You");
+            backToStartBtn = new Button(arrowImg[0],500,400,"Press K to return to menu");
 
             for (int i = 0; i < 30; i++)
             {
@@ -149,8 +152,6 @@ namespace QHacks2025
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
-
-            //MediaPlayer.Play(pokemon);
 
         }
 
@@ -221,6 +222,12 @@ namespace QHacks2025
                             MediaPlayer.Play(chugJugWithYou);
                         }
                     }
+
+                    if(MediaPlayer.State == MediaState.Stopped)
+                    {
+                        gameplayState = END;
+                    }
+
                     break;
 
                 case GAME_PLAY:
@@ -231,38 +238,49 @@ namespace QHacks2025
 
                        if(kb.IsKeyDown(W_KEY) && !prevkb.IsKeyDown(W_KEY) && arrow.GetDirection() == UP)
                        {
-                            if(arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
+                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                             {
                                 score += 50;
+                                streak++;
                                 arrow.SetIsAvailable(false);
                             }
+                            
                        }
                        else if (kb.IsKeyDown(A_KEY) && !prevkb.IsKeyDown(A_KEY) && arrow.GetDirection() == LEFT)
                        {
                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
+                               streak++;
                                score += 50;
                                arrow.SetIsAvailable(false);
-                            }
+                           }
+
                         }
                        else if (kb.IsKeyDown(S_KEY) && !prevkb.IsKeyDown(S_KEY) && arrow.GetDirection() == DOWN)
                        {
                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
-                               score += 50;
+                                streak++;
+                                score += 50;
                                 arrow.SetIsAvailable(false);
-                            }
+                           }
 
                         }
                        else if (kb.IsKeyDown(D_KEY) && !prevkb.IsKeyDown(D_KEY) && arrow.GetDirection() == RIGHT)
                        {
-                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
-                           {
+                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
+                            {
                                 arrow.SetIsAvailable(false);
                                 score += 50;
-                           }
+                                streak++;
+                            }
+                        }
+                    }
 
-                       }
+                    if(streak >= 10)
+                    {
+                        score += 150;
+                        streak = 0;
                     }
 
                     if (levelData[SONIC_LEVEL_DATA_IDX][34].GetArrowRect().Y > SCREEN_HEIGHT)
@@ -284,6 +302,10 @@ namespace QHacks2025
                     break;
 
                 case END:
+                    if(kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
+                    {
+                        gameplayState = MENU;
+                    }
 
                 break;
 
@@ -372,7 +394,7 @@ namespace QHacks2025
             for (int i = 0; i < 5; i++)
             {
                 int num = rng.Next(0, 4);
-                levelData[CHUG_JUG_LEVEL_DATA_IDX][i] = new Arrow(new Vector2((int)rng.Next(0, 360), (int)(-40 * rng.Next(0, 100) * 0.1)), 6, num);
+                levelData[CHUG_JUG_LEVEL_DATA_IDX][i] = new Arrow(new Vector2((int)rng.Next(0, 360), -40*4*i), 6, num);
             }
         }
 
@@ -393,7 +415,6 @@ namespace QHacks2025
             {
                 case MENU:
                     startBtn.DrawButton(spriteBatch, Color.Purple);
-
                     spriteBatch.DrawString(titleFont, "Robt QHacks 2025", Vector2.Zero, Color.Red);
                     break;
 
@@ -404,18 +425,20 @@ namespace QHacks2025
                     break;
 
                 case GAME_PLAY:
-      
+
+                    spriteBatch.DrawString(labelFont,"Score: "+score,new Vector2(750,200),Color.Black);
+                    spriteBatch.DrawString(labelFont, "Streak:" + streak, new Vector2(750,400), Color.Black);
+
                     foreach (Arrow arrow in levelData[(int)currLevel])
                     {
                         arrow.Draw(spriteBatch);
                     }
 
                     spriteBatch.Draw(arrowImg[RIGHT],collisionRec,Color.Black);
-
                     break;
 
                 case END:
-
+                    backToStartBtn.DrawButton(spriteBatch,Color.Purple);
                     break;
 
             }
