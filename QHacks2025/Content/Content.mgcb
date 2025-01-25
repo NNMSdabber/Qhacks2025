@@ -44,22 +44,12 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/LabelFont.spritefont
 
-#begin Fonts/LabelFont.ttf
-/importer:
-/processor:
-/build:Fonts/LabelFont.ttf
-
 #begin Fonts/TitleFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Fonts/TitleFont.spritefont
-
-#begin Fonts/TitleFont.ttf
-/importer:
-/processor:
-/build:Fonts/TitleFont.ttf
 
 #begin Images/Arrows/Arrow.png
 /importer:TextureImporter
