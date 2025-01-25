@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/sonic.mp3</SourceFile>
+  <SourceTime>2025-01-24T21:36:27.3942577-05:00</SourceTime>
+  <DestFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL/Qhacks2025/QHacks2025/bin/Debug/Content/Audio/Music/sonic.xnb</DestFile>
+  <DestTime>2025-01-25T12:10:27.9635237-05:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2023-11-11T18:28:59.7452565-05:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2023-11-11T18:28:59.7452565-05:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL/Qhacks2025/QHacks2025/bin/Debug/Content/Audio/Music/sonic.ogg</string>
+  </BuildOutput>
+</PipelineBuildEvent>
