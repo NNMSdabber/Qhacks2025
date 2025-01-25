@@ -231,6 +231,7 @@ namespace QHacks2025
                         if(startBtn.CheckIfClicked(mouse, mousePrev))
                         {
                             gameplayState = SELECT;
+                            score = 0;
                         }
                     }
 
@@ -282,30 +283,30 @@ namespace QHacks2025
                     {
                         if (sonicBtn.CheckIfClicked(mouse, mousePrev))
                         {
-                            gameplayState = GAME_PLAY;
-                            currLevel = SONIC_LEVEL_DATA_IDX;
                             MediaPlayer.Stop();
                             MediaPlayer.Play(sonic);
+                            gameplayState = GAME_PLAY;
+                            currLevel = SONIC_LEVEL_DATA_IDX;
                         }
                     }
                     else if (icirrusBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
                         if (icirrusBtn.CheckIfClicked(mouse, mousePrev))
                         {
-                            gameplayState = GAME_PLAY;
-                            currLevel = ICIRRUS_LEVEL_DATA_IDX;
                             MediaPlayer.Stop();
                             MediaPlayer.Play(pokemon);
+                            gameplayState = GAME_PLAY;
+                            currLevel = ICIRRUS_LEVEL_DATA_IDX;
                         }
                     }
                     else if (chugBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
                         if (chugBtn.CheckIfClicked(mouse, mousePrev))
                         {
-                            gameplayState = GAME_PLAY;
-                            currLevel = CHUG_JUG_LEVEL_DATA_IDX;
                             MediaPlayer.Stop();
                             MediaPlayer.Play(chugJugWithYou);
+                            gameplayState = GAME_PLAY;
+                            currLevel = CHUG_JUG_LEVEL_DATA_IDX;
                         }
                     }
                     
@@ -413,7 +414,7 @@ namespace QHacks2025
                         SetUpChugJug();
                     }
 
-                    if(MediaPlayer.State == MediaState.Playing)
+                    if(MediaPlayer.State != MediaState.Playing)
                     {
                         gameplayState = END;
                     }
@@ -429,6 +430,7 @@ namespace QHacks2025
                     if(kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
                         gameplayState = MENU;
+                        MediaPlayer.Play(menuMusic);
                     }
 
                 break;
