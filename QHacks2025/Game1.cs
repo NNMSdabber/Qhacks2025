@@ -39,6 +39,7 @@ namespace QHacks2025
 
         private const int SONIC_LEVEL_DATA_IDX = 0;
         private const int ICIRRUS_LEVEL_DATA_IDX = 1;
+        private const int CHUG_JUG_LEVEL_DATA_IDX = 2;
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -51,11 +52,12 @@ namespace QHacks2025
 
         private Button sonicBtn;
         private Button icirrusBtn;
+        private Button chugBtn;
 
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
 
-        private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15] };
+        private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15], new Arrow[5]};
 
         public static SpriteFont labelFont;
         public static SpriteFont titleFont;
@@ -73,6 +75,7 @@ namespace QHacks2025
         private static Song menuMusic;
         private static Song sonic;
         private static Song pokemon;
+        private static Song chugJugWithYou;
 
 
         public Game1()
@@ -118,6 +121,7 @@ namespace QHacks2025
 
             sonic = Content.Load<Song>("Audio/Music/Sonic");
             pokemon = Content.Load<Song>("Audio/Music/icirrus");
+            chugJugWithYou = Content.Load<Song>("Audio/Music/chug_jug");
 
             labelFont = Content.Load<SpriteFont>("Fonts/LabelFont");
             titleFont = Content.Load<SpriteFont>("Fonts/TitleFont");
@@ -129,6 +133,7 @@ namespace QHacks2025
             
             sonicBtn = new Button(arrowImg[0], 100, 400, "Windy Hill");
             icirrusBtn = new Button(arrowImg[0], 500, 400, "Icirrus City");
+            chugBtn = new Button(arrowImg[0], 900, 400, "Chug Jug With You");
 
             for (int i = 0; i < 30; i++)
             {
@@ -137,6 +142,7 @@ namespace QHacks2025
 
             SetUpSonic();
             SetUpPokemon();
+            SetUpChugJug();
 
             //MediaPlayer.Play(pokemon);
 
@@ -199,6 +205,16 @@ namespace QHacks2025
                             MediaPlayer.Play(pokemon);
                         }
                     }
+                    else if (chugBtn.rec.Contains(mouse.Position.ToVector2()))
+                    {
+                        if (chugBtn.CheckIfClicked(mouse, mousePrev))
+                        {
+                            gameplayState = GAME_PLAY;
+                            currLevel = CHUG_JUG_LEVEL_DATA_IDX;
+                            MediaPlayer.Stop();
+                            MediaPlayer.Play(chugJugWithYou);
+                        }
+                    }
                     break;
 
                 case GAME_PLAY:
@@ -250,6 +266,10 @@ namespace QHacks2025
                     if (levelData[ICIRRUS_LEVEL_DATA_IDX][14].GetArrowRect().Y > SCREEN_HEIGHT)
                     {
                         SetUpPokemon(); 
+                    }
+                    if (levelData[CHUG_JUG_LEVEL_DATA_IDX][3].GetArrowRect().Y > SCREEN_HEIGHT)
+                    {
+                        SetUpChugJug();
                     }
                     break;
 
@@ -339,6 +359,14 @@ namespace QHacks2025
             levelData[SONIC_LEVEL_DATA_IDX][35] = new Arrow(new Vector2(350, -2450), 7, UP);
         }
 
+        public void SetUpChugJug()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                int num = rng.Next(0, 4);
+                levelData[CHUG_JUG_LEVEL_DATA_IDX][i] = new Arrow(new Vector2((int)rng.Next(0, 360), (int)(-40 * rng.Next(0, 100) * 0.1)), 6, num);
+            }
+        }
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -362,6 +390,7 @@ namespace QHacks2025
                 case SELECT:
                     sonicBtn.DrawButton(spriteBatch, Color.Purple);
                     icirrusBtn.DrawButton(spriteBatch, Color.Purple);
+                    chugBtn.DrawButton(spriteBatch, Color.Purple);
                     break;
 
                 case GAME_PLAY:
