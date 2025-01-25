@@ -1,0 +1,11 @@
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\bin\Debug\QHacks2025.exe.config
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\bin\Debug\QHacks2025.exe
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\bin\Debug\QHacks2025.pdb
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\bin\Debug\GameUtility.dll
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\bin\Debug\MonoGame.Framework.dll
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\bin\Debug\MonoGame.Framework.xml
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\obj\Debug\QHacks2025.csproj.AssemblyReference.cache
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\obj\Debug\QHacks2025.csproj.CoreCompileInputs.cache
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\obj\Debug\QHacks2025.csproj.CopyComplete
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\obj\Debug\QHacks2025.exe
+C:\Users\Name\Documents\QHacks2025REAL-REAL-REAL\QHacks2025\QHacks2025\obj\Debug\QHacks2025.pdb
