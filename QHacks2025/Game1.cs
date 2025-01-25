@@ -426,8 +426,8 @@ namespace QHacks2025
 
                 case GAME_PLAY:
 
-                    spriteBatch.DrawString(labelFont,"Score: "+score,new Vector2(750,200),Color.Black);
-                    spriteBatch.DrawString(labelFont, "Streak:" + streak, new Vector2(750,400), Color.Black);
+                    spriteBatch.DrawString(labelFont,"Score: "+score,new Vector2(550,0),Color.Black);
+                    spriteBatch.DrawString(labelFont, "Streak:" + streak, new Vector2(950,0), Color.Black);
 
                     foreach (Arrow arrow in levelData[(int)currLevel])
                     {

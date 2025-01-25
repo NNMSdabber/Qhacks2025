@@ -1,16 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "t5SoUhqx1SA=",
+  "dgSpecHash": "BVHMHQMl2XQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\QHacks2025.csproj",
+  "projectFilePath": "/home/ashton/RiderProjects/Qhacks2025/QHacks2025/QHacks2025.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Nmseg\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\Nmseg\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.2.1105\\monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
-    "C:\\Users\\Nmseg\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
-    "C:\\Users\\Nmseg\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
-    "C:\\Users\\Nmseg\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
-    "C:\\Users\\Nmseg\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\Nmseg\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+    "/home/ashton/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/home/ashton/.nuget/packages/monogame.framework.desktopgl/3.8.2.1105/monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
+    "/home/ashton/.nuget/packages/monogame.library.sdl/2.26.5.5/monogame.library.sdl.2.26.5.5.nupkg.sha512",
+    "/home/ashton/.nuget/packages/nvorbis/0.10.4/nvorbis.0.10.4.nupkg.sha512",
+    "/home/ashton/.nuget/packages/system.data.datasetextensions/4.5.0/system.data.datasetextensions.4.5.0.nupkg.sha512",
+    "/home/ashton/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/home/ashton/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
