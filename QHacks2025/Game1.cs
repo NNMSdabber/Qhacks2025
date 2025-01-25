@@ -14,11 +14,6 @@ using System.Xml.Schema;
 
 namespace QHacks2025
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
-    /// 
-
     public class Game1 : Game
     {
         public const int SCREEN_WIDTH = 1280;
@@ -42,18 +37,25 @@ namespace QHacks2025
         public const int SELECT = 3;
         public const int RESULTS = 4;
 
+        private const int SONIC_LEVEL_DATA_IDX = 0;
+        private const int ICIRRUS_LEVEL_DATA_IDX = 1;
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        public int gameplayState = GAME_PLAY;
+        public int gameplayState = MENU;
+        private int currLevel = SONIC_LEVEL_DATA_IDX;
         public static Random rng = new Random();
 
         private Button startBtn;
 
+        private Button sonicBtn;
+        private Button icirrusBtn;
+
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
-        private Arrow[] levelSonic = new Arrow[36];
-        private Arrow[] levelPokemon = new Arrow[15];
+
+        private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15] };
 
         public static SpriteFont labelFont;
         public static SpriteFont titleFont;
@@ -124,6 +126,9 @@ namespace QHacks2025
             MediaPlayer.Play(menuMusic);
 
             startBtn = new Button(arrowImg[0], 400, 400, "Start");
+            
+            sonicBtn = new Button(arrowImg[0], 100, 400, "Windy Hill");
+            icirrusBtn = new Button(arrowImg[0], 500, 400, "Icirrus City");
 
             for (int i = 0; i < 30; i++)
             {
@@ -158,23 +163,47 @@ namespace QHacks2025
             prevkb = kb;
             kb = Keyboard.GetState();
 
-            
+            mousePrev = mouse;
+            mouse = Mouse.GetState();
 
             switch (gameplayState) 
             {
                 case MENU:
                     if (startBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
-                        if (IsMouseButtonPressed(0, mouse) && !IsMouseButtonPressed(0, mousePrev))
+                        if(startBtn.CheckIfClicked(mouse, mousePrev))
                         {
+                            gameplayState = SELECT;
+                        }
+                    }
+                    break;
 
+                case SELECT:
+                    if (sonicBtn.rec.Contains(mouse.Position.ToVector2()))
+                    {
+                        if (sonicBtn.CheckIfClicked(mouse, mousePrev))
+                        {
+                            gameplayState = GAME_PLAY;
+                            currLevel = SONIC_LEVEL_DATA_IDX;
+                            MediaPlayer.Stop();
+                            MediaPlayer.Play(sonic);
+                        }
+                    }
+                    else if (icirrusBtn.rec.Contains(mouse.Position.ToVector2()))
+                    {
+                        if (icirrusBtn.CheckIfClicked(mouse, mousePrev))
+                        {
+                            gameplayState = GAME_PLAY;
+                            currLevel = ICIRRUS_LEVEL_DATA_IDX;
+                            MediaPlayer.Stop();
+                            MediaPlayer.Play(pokemon);
                         }
                     }
                     break;
 
                 case GAME_PLAY:
 
-                    foreach (Arrow arrow in levelPokemon)
+                    foreach (Arrow arrow in levelData[(int)currLevel])
                     {
                         arrow.Update(gameTime);
 
@@ -214,11 +243,11 @@ namespace QHacks2025
                        }
                     }
 
-                    if (levelSonic[34].GetArrowRect().Y > SCREEN_HEIGHT)
+                    if (levelData[SONIC_LEVEL_DATA_IDX][34].GetArrowRect().Y > SCREEN_HEIGHT)
                     {
                         SetUpSonic();
                     }
-                    if (levelPokemon[14].GetArrowRect().Y > SCREEN_HEIGHT)
+                    if (levelData[ICIRRUS_LEVEL_DATA_IDX][14].GetArrowRect().Y > SCREEN_HEIGHT)
                     {
                         SetUpPokemon(); 
                     }
@@ -239,75 +268,75 @@ namespace QHacks2025
 
         private void SetUpPokemon()
         {
-            levelPokemon[0] = new Arrow(new Vector2(150, 0), 5, LEFT);
-            levelPokemon[1] = new Arrow(new Vector2(50, -150), 5, DOWN);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][0] = new Arrow(new Vector2(150, 0), 5, LEFT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][1] = new Arrow(new Vector2(50, -150), 5, DOWN);
 
-            levelPokemon[2] = new Arrow(new Vector2(250, -250), 5, RIGHT);
-            levelPokemon[3] = new Arrow(new Vector2(350, -350), 5, UP);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][2] = new Arrow(new Vector2(250, -250), 5, RIGHT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][3] = new Arrow(new Vector2(350, -350), 5, UP);
 
-            levelPokemon[4] = new Arrow(new Vector2(150, -500), 5, LEFT);
-            levelPokemon[5] = new Arrow(new Vector2(250, -575), 5, RIGHT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][4] = new Arrow(new Vector2(150, -500), 5, LEFT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][5] = new Arrow(new Vector2(250, -575), 5, RIGHT);
 
-            levelPokemon[6] = new Arrow(new Vector2(350, -700), 5, UP);
-            levelPokemon[7] = new Arrow(new Vector2(50, -800), 5, DOWN);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][6] = new Arrow(new Vector2(350, -700), 5, UP);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][7] = new Arrow(new Vector2(50, -800), 5, DOWN);
 
-            levelPokemon[8] = new Arrow(new Vector2(150, -900), 5, LEFT);
-            levelPokemon[9] = new Arrow(new Vector2(350, -1000), 5, UP);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][8] = new Arrow(new Vector2(150, -900), 5, LEFT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][9] = new Arrow(new Vector2(350, -1000), 5, UP);
 
-            levelPokemon[10] = new Arrow(new Vector2(50, -1200), 5, DOWN);
-            levelPokemon[11] = new Arrow(new Vector2(250, -1270), 5, RIGHT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][10] = new Arrow(new Vector2(50, -1200), 5, DOWN);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][11] = new Arrow(new Vector2(250, -1270), 5, RIGHT);
 
-            levelPokemon[12] = new Arrow(new Vector2(50, -1370), 5, DOWN);
-            levelPokemon[13] = new Arrow(new Vector2(250, -1390), 5, RIGHT);
-            levelPokemon[14] = new Arrow(new Vector2(250, -1480), 5, RIGHT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][12] = new Arrow(new Vector2(50, -1370), 5, DOWN);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][13] = new Arrow(new Vector2(250, -1390), 5, RIGHT);
+            levelData[ICIRRUS_LEVEL_DATA_IDX][14] = new Arrow(new Vector2(250, -1480), 5, RIGHT);
         }
 
         private void SetUpSonic()
         {
-            levelSonic[0] = new Arrow(new Vector2(50,0),7,DOWN);
-            levelSonic[1] = new Arrow(new Vector2(150,-100), 7, LEFT);
-            levelSonic[2] = new Arrow(new Vector2(50, -150), 7, DOWN);
-            levelSonic[3] = new Arrow(new Vector2(50, -250), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][0] = new Arrow(new Vector2(50,0),7,DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][1] = new Arrow(new Vector2(150,-100), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][2] = new Arrow(new Vector2(50, -150), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][3] = new Arrow(new Vector2(50, -250), 7, DOWN);
 
-            levelSonic[4] = new Arrow(new Vector2(50, -400), 7, DOWN);
-            levelSonic[5] = new Arrow(new Vector2(150, -450), 7, LEFT);
-            levelSonic[6] = new Arrow(new Vector2(250, -470), 7, RIGHT);
-            levelSonic[7] = new Arrow(new Vector2(350, -500), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][4] = new Arrow(new Vector2(50, -400), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][5] = new Arrow(new Vector2(150, -450), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][6] = new Arrow(new Vector2(250, -470), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][7] = new Arrow(new Vector2(350, -500), 7, UP);
 
-            levelSonic[8] = new Arrow(new Vector2(50, -650), 7, DOWN);
-            levelSonic[9] = new Arrow(new Vector2(150, -700), 7, LEFT);
-            levelSonic[10] = new Arrow(new Vector2(250, -750), 7, RIGHT);
-            levelSonic[11] = new Arrow(new Vector2(150, -800), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][8] = new Arrow(new Vector2(50, -650), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][9] = new Arrow(new Vector2(150, -700), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][10] = new Arrow(new Vector2(250, -750), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][11] = new Arrow(new Vector2(150, -800), 7, LEFT);
 
-            levelSonic[12] = new Arrow(new Vector2(50, -950), 7, DOWN);
-            levelSonic[13] = new Arrow(new Vector2(150, -950), 7, LEFT);
-            levelSonic[14] = new Arrow(new Vector2(250, -1000), 7, RIGHT);
-            levelSonic[15] = new Arrow(new Vector2(150, -1075), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][12] = new Arrow(new Vector2(50, -950), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][13] = new Arrow(new Vector2(150, -950), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][14] = new Arrow(new Vector2(250, -1000), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][15] = new Arrow(new Vector2(150, -1075), 7, LEFT);
 
-            levelSonic[16] = new Arrow(new Vector2(150, -1250), 7, LEFT);
-            levelSonic[17] = new Arrow(new Vector2(150, -1250), 7, RIGHT);
-            levelSonic[18] = new Arrow(new Vector2(50, -1300), 7, DOWN);
-            levelSonic[19] = new Arrow(new Vector2(350, -1300), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][16] = new Arrow(new Vector2(150, -1250), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][17] = new Arrow(new Vector2(150, -1250), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][18] = new Arrow(new Vector2(50, -1300), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][19] = new Arrow(new Vector2(350, -1300), 7, UP);
 
-            levelSonic[20] = new Arrow(new Vector2(50, -1400), 7, DOWN);
-            levelSonic[21] = new Arrow(new Vector2(150, -1500), 7, LEFT);
-            levelSonic[22] = new Arrow(new Vector2(50, -1550), 7, DOWN);
-            levelSonic[23] = new Arrow(new Vector2(50, -1650), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][20] = new Arrow(new Vector2(50, -1400), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][21] = new Arrow(new Vector2(150, -1500), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][22] = new Arrow(new Vector2(50, -1550), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][23] = new Arrow(new Vector2(50, -1650), 7, DOWN);
 
-            levelSonic[24] = new Arrow(new Vector2(50, -1800), 7, DOWN);
-            levelSonic[25] = new Arrow(new Vector2(150, -1850), 7, LEFT);
-            levelSonic[26] = new Arrow(new Vector2(250, -1850), 7, RIGHT);
-            levelSonic[27] = new Arrow(new Vector2(350, -1900), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][24] = new Arrow(new Vector2(50, -1800), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][25] = new Arrow(new Vector2(150, -1850), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][26] = new Arrow(new Vector2(250, -1850), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][27] = new Arrow(new Vector2(350, -1900), 7, UP);
 
-            levelSonic[28] = new Arrow(new Vector2(50, -2050), 7, DOWN);
-            levelSonic[29] = new Arrow(new Vector2(150, -2050), 7, LEFT);
-            levelSonic[30] = new Arrow(new Vector2(250, -2100), 7, RIGHT);
-            levelSonic[31] = new Arrow(new Vector2(150, -2150), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][28] = new Arrow(new Vector2(50, -2050), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][29] = new Arrow(new Vector2(150, -2050), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][30] = new Arrow(new Vector2(250, -2100), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][31] = new Arrow(new Vector2(150, -2150), 7, LEFT);
 
-            levelSonic[32] = new Arrow(new Vector2(150, -2300), 7, LEFT);
-            levelSonic[33] = new Arrow(new Vector2(250, -2300), 7, RIGHT);
-            levelSonic[34] = new Arrow(new Vector2(50, -2450), 7, DOWN);
-            levelSonic[35] = new Arrow(new Vector2(350, -2450), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][32] = new Arrow(new Vector2(150, -2300), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][33] = new Arrow(new Vector2(250, -2300), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][34] = new Arrow(new Vector2(50, -2450), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][35] = new Arrow(new Vector2(350, -2450), 7, UP);
         }
 
 
@@ -330,9 +359,14 @@ namespace QHacks2025
                     spriteBatch.DrawString(titleFont, "Robt QHacks 2025", Vector2.Zero, Color.Red);
                     break;
 
+                case SELECT:
+                    sonicBtn.DrawButton(spriteBatch, Color.Purple);
+                    icirrusBtn.DrawButton(spriteBatch, Color.Purple);
+                    break;
+
                 case GAME_PLAY:
       
-                    foreach (Arrow arrow in levelPokemon)
+                    foreach (Arrow arrow in levelData[(int)currLevel])
                     {
                         arrow.Draw(spriteBatch);
                     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace QHacks2025
 {
@@ -64,6 +65,13 @@ namespace QHacks2025
         public static float CenterSpriteFontY(string text, SpriteFont font, int enviromentHeight)
         {
             return (enviromentHeight / 2) - (font.MeasureString(text).Y / 2);
+        }
+
+        public bool CheckIfClicked(MouseState mouse, MouseState mousePrev)
+        {
+            if (mouse.LeftButton == ButtonState.Pressed && mousePrev.LeftButton == ButtonState.Released) return true;
+
+            return false;
         }
     }
 }
