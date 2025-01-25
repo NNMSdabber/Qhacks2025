@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using System.Xml.Schema;
 
 namespace QHacks2025
 {
@@ -46,13 +47,18 @@ namespace QHacks2025
 
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
+        private Arrow[] levelSonic = new Arrow[36];
+
         
         public static Random rng = new Random();
 
         private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,30);
 
         public KeyboardState kb = new KeyboardState();
-        public KeyboardState prevkb = new KeyboardState(); 
+        public KeyboardState prevkb = new KeyboardState();
+
+        private int score = 0;
+
 
         public Game1()
         {
@@ -100,6 +106,9 @@ namespace QHacks2025
             {
                 arrows.AddLast(new Arrow(new Vector2(100,0-200*i),8,rng.Next(0,4)));
             }
+
+            SetUpSonic();
+
         }
 
         /// <summary>
@@ -132,7 +141,7 @@ namespace QHacks2025
 
                 case GAME_PLAY:
 
-                    foreach (Arrow arrow in arrows)
+                    foreach (Arrow arrow in levelSonic)
                     {
                         arrow.Update(gameTime);
 
@@ -140,7 +149,7 @@ namespace QHacks2025
                        {
                             if(arrow.GetArrowRect().Intersects(collisionRec))
                             {
-                                Exit();
+                                score += 50;
                             }
 
                        }
@@ -148,28 +157,32 @@ namespace QHacks2025
                        {
                            if (arrow.GetArrowRect().Intersects(collisionRec))
                            {
-                               Exit();
+                               score += 50;
                            }
 
-                       }
+                        }
                        else if (kb.IsKeyDown(S_KEY) && !prevkb.IsKeyDown(S_KEY) && arrow.GetDirection() == DOWN)
                        {
                            if (arrow.GetArrowRect().Intersects(collisionRec))
                            {
-                               Exit();
+                               score += 50;
                            }
 
-                       }
+                        }
                        else if (kb.IsKeyDown(D_KEY) && !prevkb.IsKeyDown(D_KEY) && arrow.GetDirection() == RIGHT)
                        {
                            if (arrow.GetArrowRect().Intersects(collisionRec))
                            {
-                               Exit();
+                               score += 50;
                            }
 
                        }
                     }
 
+                    if (levelSonic[34].GetArrowRect().Y > SCREEN_HEIGHT)
+                    {
+                        SetUpSonic();
+                    }
 
                     break;
 
@@ -185,6 +198,55 @@ namespace QHacks2025
 
             base.Update(gameTime);
         }
+
+        private void SetUpSonic()
+        {
+            levelSonic[0] = new Arrow(new Vector2(50,0),7,DOWN);
+            levelSonic[1] = new Arrow(new Vector2(150,-100), 7, LEFT);
+            levelSonic[2] = new Arrow(new Vector2(50, -150), 7, DOWN);
+            levelSonic[3] = new Arrow(new Vector2(50, -250), 7, DOWN);
+
+            levelSonic[4] = new Arrow(new Vector2(50, -400), 7, DOWN);
+            levelSonic[5] = new Arrow(new Vector2(150, -450), 7, LEFT);
+            levelSonic[6] = new Arrow(new Vector2(250, -470), 7, RIGHT);
+            levelSonic[7] = new Arrow(new Vector2(350, -500), 7, UP);
+
+            levelSonic[8] = new Arrow(new Vector2(50, -650), 7, DOWN);
+            levelSonic[9] = new Arrow(new Vector2(150, -700), 7, LEFT);
+            levelSonic[10] = new Arrow(new Vector2(250, -750), 7, RIGHT);
+            levelSonic[11] = new Arrow(new Vector2(150, -800), 7, LEFT);
+
+            levelSonic[12] = new Arrow(new Vector2(50, -950), 7, DOWN);
+            levelSonic[13] = new Arrow(new Vector2(150, -950), 7, LEFT);
+            levelSonic[14] = new Arrow(new Vector2(250, -1000), 7, RIGHT);
+            levelSonic[15] = new Arrow(new Vector2(150, -1075), 7, LEFT);
+
+            levelSonic[16] = new Arrow(new Vector2(150, -1250), 7, LEFT);
+            levelSonic[17] = new Arrow(new Vector2(150, -1250), 7, RIGHT);
+            levelSonic[18] = new Arrow(new Vector2(50, -1300), 7, DOWN);
+            levelSonic[19] = new Arrow(new Vector2(350, -1300), 7, UP);
+
+            levelSonic[20] = new Arrow(new Vector2(50, -1400), 7, DOWN);
+            levelSonic[21] = new Arrow(new Vector2(150, -1500), 7, LEFT);
+            levelSonic[22] = new Arrow(new Vector2(50, -1550), 7, DOWN);
+            levelSonic[23] = new Arrow(new Vector2(50, -1650), 7, DOWN);
+
+            levelSonic[24] = new Arrow(new Vector2(50, -1800), 7, DOWN);
+            levelSonic[25] = new Arrow(new Vector2(150, -1850), 7, LEFT);
+            levelSonic[26] = new Arrow(new Vector2(250, -1850), 7, RIGHT);
+            levelSonic[27] = new Arrow(new Vector2(350, -1900), 7, UP);
+
+            levelSonic[28] = new Arrow(new Vector2(50, -2050), 7, DOWN);
+            levelSonic[29] = new Arrow(new Vector2(150, -2050), 7, LEFT);
+            levelSonic[30] = new Arrow(new Vector2(250, -2100), 7, RIGHT);
+            levelSonic[31] = new Arrow(new Vector2(150, -2150), 7, LEFT);
+
+            levelSonic[32] = new Arrow(new Vector2(150, -2300), 7, LEFT);
+            levelSonic[33] = new Arrow(new Vector2(250, -2300), 7, RIGHT);
+            levelSonic[34] = new Arrow(new Vector2(50, -2450), 7, DOWN);
+            levelSonic[35] = new Arrow(new Vector2(350, -2450), 7, UP);
+        }
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -205,7 +267,7 @@ namespace QHacks2025
 
                 case GAME_PLAY:
       
-                    foreach (Arrow arrow in arrows)
+                    foreach (Arrow arrow in levelSonic)
                     {
                         arrow.Draw(spriteBatch);
                     }
