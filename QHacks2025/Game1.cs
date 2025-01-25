@@ -40,6 +40,14 @@ namespace QHacks2025
         private const int SONIC_LEVEL_DATA_IDX = 0;
         private const int ICIRRUS_LEVEL_DATA_IDX = 1;
         private const int CHUG_JUG_LEVEL_DATA_IDX = 2;
+        
+        private const byte ANIM_COLS_MOVE = 3;
+        private const byte ANIM_ROWS_MOVE = 3;
+        private const byte TOTAL_FRAMES_MOVE = 9;
+        private const byte START_FRAME = 0;
+        private const byte IDLE_FRAME = 0;
+        private const int ANIM_DURATION_MOVE = 900;
+        private Vector2 amyPos = new Vector2(700, 300);
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -67,12 +75,14 @@ namespace QHacks2025
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
 
+        public static Texture2D barImg;
+        
         private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15], new Arrow[5]};
 
         public static SpriteFont labelFont;
         public static SpriteFont titleFont;
 
-        private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,30);
+        private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,15);
 
         public KeyboardState kb = new KeyboardState();
         public KeyboardState prevkb = new KeyboardState();
@@ -82,6 +92,9 @@ namespace QHacks2025
 
         public MouseState mouse;
         public MouseState mousePrev;
+
+        public static Texture2D amySpriteSheet;
+        private Animation amyAnim;
 
         private static Song menuMusic;
         private static Song sonic;
@@ -138,6 +151,10 @@ namespace QHacks2025
             pokemon = Content.Load<Song>("Audio/Music/icirrus");
             chugJugWithYou = Content.Load<Song>("Audio/Music/chug_jug");
 
+            barImg = Content.Load<Texture2D>("Images/bar");
+            
+            amySpriteSheet = Content.Load<Texture2D>("Images/Characters/amy");
+            
             labelFont = Content.Load<SpriteFont>("Fonts/LabelFont");
             titleFont = Content.Load<SpriteFont>("Fonts/TitleFont");
 
@@ -155,11 +172,14 @@ namespace QHacks2025
             {
                 arrows.AddLast(new Arrow(new Vector2(100,0-200*i),8,rng.Next(0,4)));
             }
-
+            
+            amyAnim = new Animation(amySpriteSheet, ANIM_COLS_MOVE, ANIM_ROWS_MOVE,
+                TOTAL_FRAMES_MOVE, START_FRAME, IDLE_FRAME, Animation.ANIMATE_FOREVER, ANIM_DURATION_MOVE, amyPos, true);
+            amyAnim.Activate(true);
+            
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
-
         }
 
         /// <summary>
@@ -350,6 +370,8 @@ namespace QHacks2025
                         SetUpChugJug();
                     }
 
+                    amyAnim.Update(gameTime);
+                    
                     bgColor.R += 1;
                     bgColor.G += 2;
                     bgColor.B += 3;
@@ -503,7 +525,9 @@ namespace QHacks2025
                         arrow.Draw(spriteBatch);
                     }
 
-                    spriteBatch.Draw(arrowImg[RIGHT],collisionRec,Color.Black);
+                    amyAnim.Draw(spriteBatch, bgColor, SpriteEffects.None);
+                    
+                    spriteBatch.Draw(barImg,collisionRec,Color.White * 0.5f);
                     break;
 
                 case END:

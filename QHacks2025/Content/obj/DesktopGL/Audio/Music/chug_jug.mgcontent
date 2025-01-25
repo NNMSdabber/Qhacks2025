@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/chug_jug.mp3</SourceFile>
-  <SourceTime>2025-01-25T16:08:35.3381896-05:00</SourceTime>
-  <DestFile>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Audio/Music/chug_jug.xnb</DestFile>
-  <DestTime>2025-01-25T17:03:23.3039539-05:00</DestTime>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Audio/Music/chug_jug.mp3</SourceFile>
+  <SourceTime>2025-01-25T13:32:39.4367137-05:00</SourceTime>
+  <DestFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Audio/Music/chug_jug.xnb</DestFile>
+  <DestTime>2025-01-25T15:40:13.9168292-05:00</DestTime>
   <Importer>Mp3Importer</Importer>
-  <ImporterTime>2024-08-16T13:05:56-04:00</ImporterTime>
+  <ImporterTime>2023-11-11T18:28:59.7452565-05:00</ImporterTime>
   <Processor>SongProcessor</Processor>
-  <ProcessorTime>2024-08-16T13:05:56-04:00</ProcessorTime>
+  <ProcessorTime>2023-11-11T18:28:59.7452565-05:00</ProcessorTime>
   <Parameters>
     <Key>Quality</Key>
     <Value>Best</Value>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Audio/Music/chug_jug.ogg</string>
+    <string>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Audio/Music/chug_jug.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>
