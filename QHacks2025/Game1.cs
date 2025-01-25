@@ -304,16 +304,11 @@ namespace QHacks2025
                             MediaPlayer.Play(chugJugWithYou);
                         }
                     }
-
-                    if(MediaPlayer.State == MediaState.Stopped)
-                    {
-                        gameplayState = END;
-                    }
-
+                    
                     break;
 
                 case GAME_PLAY:
-
+                    
                     foreach (Arrow arrow in levelData[(int)currLevel])
                     {
                         arrow.Update(gameTime);
@@ -414,6 +409,11 @@ namespace QHacks2025
                         SetUpChugJug();
                     }
 
+                    if(MediaPlayer.State == MediaState.Stopped)
+                    {
+                        gameplayState = END;
+                    }
+                    
                     amyAnim.Update(gameTime);
                     
                     bgColor.R += 1;
