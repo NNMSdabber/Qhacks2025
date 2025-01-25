@@ -23,7 +23,7 @@ namespace QHacks2025
         public const Keys A_KEY = Keys.A;
         public const Keys S_KEY = Keys.S;
         public const Keys D_KEY = Keys.D;
-        public const Keys SELECT_KEY = Keys.Enter;
+        public const Keys SELECT_KEY = Keys.K;
 
         public const int MAX_ARROWS = 4;
         public const int RIGHT = 0;
@@ -49,6 +49,8 @@ namespace QHacks2025
         public static Random rng = new Random();
 
         private Button startBtn;
+
+        private int curMenuNum = SONIC_LEVEL_DATA_IDX;
 
         private Button sonicBtn;
         private Button icirrusBtn;
@@ -194,9 +196,51 @@ namespace QHacks2025
                             gameplayState = SELECT;
                         }
                     }
+
+                    if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
+                    {
+                        gameplayState = SELECT;
+                    }
                     break;
 
                 case SELECT:
+
+                    if (kb.IsKeyDown(D_KEY) && !prevkb.IsKeyDown(D_KEY))
+                    {
+                        curMenuNum += 1;
+                        if (curMenuNum > 2)
+                        {
+                            curMenuNum = SONIC_LEVEL_DATA_IDX;
+                        }
+                    }
+                    else if (kb.IsKeyDown(A_KEY) && !prevkb.IsKeyDown(A_KEY))
+                    {
+                        curMenuNum -= 1;
+                        if (curMenuNum < 0)
+                        {
+                            curMenuNum = CHUG_JUG_LEVEL_DATA_IDX;
+                        }
+                    }
+
+                    if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
+                    {
+                        gameplayState = GAME_PLAY;
+                        currLevel = curMenuNum;
+                        MediaPlayer.Stop();
+                        switch (currLevel)
+                        {
+                            case SONIC_LEVEL_DATA_IDX:
+                                MediaPlayer.Play(sonic);
+                                break;
+                            case ICIRRUS_LEVEL_DATA_IDX:
+                                MediaPlayer.Play(pokemon);
+                                break;
+                            case CHUG_JUG_LEVEL_DATA_IDX:
+                                MediaPlayer.Play(chugJugWithYou);
+                                break;
+                        }
+                    }
+                    
                     if (sonicBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
                         if (sonicBtn.CheckIfClicked(mouse, mousePrev))
