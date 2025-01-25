@@ -64,7 +64,14 @@ void loop() {
   // if (digitalRead(2) == HIGH) 
   // {
   //   isPressed2 = false;
-  // }
+  // }  if (digitalRead(4) == LOW)
+  {
+    Serial.println("pin 4");
+    Keyboard.press('k');
+    Keyboard.release('k');
+
+
+  }
   // if (digitalRead(3) == HIGH) 
   // {
   //   isPressed3 = false;
@@ -98,12 +105,20 @@ void loop() {
 
 
   }
-  if (digitalRead(4) == LOW) 
+  // if (digitalRead(4) == LOW)
+  // {
+  //   Serial.println("pin 4");
+  //   Keyboard.press('k');
+  //   Keyboard.release('k');
+  //
+  //
+  // }
+  if (digitalRead(4) == LOW && !isPressed4)
   {
     Serial.println("pin 4");
     Keyboard.press('k');
     Keyboard.release('k');
-
+    isPressed4 = true;
 
   }
   if (digitalRead(5) == LOW) 
@@ -122,5 +137,10 @@ void loop() {
     Keyboard.release('s');
 
 
+  }
+
+  if (digitalRead(4) == HIGH)
+  {
+    isPressed4 = false;
   }
 }
