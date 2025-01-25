@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/Arrows/Arrow.png</SourceFile>
-  <SourceTime>2025-01-25T16:08:35.4015169-05:00</SourceTime>
-  <DestFile>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Images/Arrows/Arrow.xnb</DestFile>
-  <DestTime>2025-01-25T18:28:19.8224236-05:00</DestTime>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/Arrows/Arrow.png</SourceFile>
+  <SourceTime>2025-01-25T13:32:39.5313666-05:00</SourceTime>
+  <DestFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL-REAL/Qhacks2025/QHacks2025/bin/Debug/net8.0-windows/Content/Images/Arrows/Arrow.xnb</DestFile>
+  <DestTime>2025-01-25T17:01:30.2017781-05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2024-08-16T13:05:56-04:00</ImporterTime>
+  <ImporterTime>2023-11-11T18:28:59.7452565-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2024-08-16T13:05:56-04:00</ProcessorTime>
+  <ProcessorTime>2023-11-11T18:28:59.7452565-05:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

@@ -54,64 +54,64 @@ void loop() {
     isPressed6 = true;
   }
 
-    if (digitalRead(2) == LOW && !isPressed2)
-  {
-    Serial.println("pin 2");
-    Keyboard.press('w');
-    isPressed2 = true;
+  //   if (digitalRead(2) == LOW && !isPressed2)
+  // {
+  //   Serial.println("pin 2");
+  //   Keyboard.press('w');
+  //   isPressed2 = true;
 
-  }
-  if (digitalRead(3) == LOW && !isPressed3)
-  {
-    Serial.println("pin 3");
-    Keyboard.press('d');
-    isPressed3 = true;
+  // }
+  // if (digitalRead(3) == LOW && !isPressed3)
+  // {
+  //   Serial.println("pin 3");
+  //   Keyboard.press('d');
+  //   isPressed3 = true;
 
-  }
-  if (digitalRead(4) == LOW && !isPressed4)
-  {
-    Serial.println("pin 4");
-    Keyboard.press('k');
-    isPressed4 = true;
-  }
-  if (digitalRead(5) == LOW && !isPressed5)
+  // }
+  // if (digitalRead(4) == LOW && !isPressed4)
+  // {
+  //   Serial.println("pin 4");
+  //   Keyboard.press('k');
+  //   isPressed4 = true;
+  // }
+  // if (digitalRead(5) == LOW && !isPressed5)
 
-  {
-    Serial.println("pin 5");
-    Keyboard.press('a');
-    isPressed5 = true;
+  // {
+  //   Serial.println("pin 5");
+  //   Keyboard.press('a');
+  //   isPressed5 = true;
 
-  }
-  if (digitalRead(6) == LOW && !isPressed6)
-  {
-    Serial.println("pin 6");
-    Keyboard.press('s');
-    isPressed6 = true;
-  }
+  // }
+  // if (digitalRead(6) == LOW && !isPressed6)
+  // {
+  //   Serial.println("pin 6");
+  //   Keyboard.press('s');
+  //   isPressed6 = true;
+  // }
 
   if (digitalRead(2) == HIGH)
   {
-    Keyboard.press('w');
+    Keyboard.release('w');
     isPressed2 = false;
   }
   if (digitalRead(3) == HIGH)
   {
-    Keyboard.press('d');
+    Keyboard.release('d');
     isPressed3 = false;
   }
   if (digitalRead(4) == HIGH)
   {
-    Keyboard.press('k');
+    Keyboard.release('k');
     isPressed4 = false;
   }
   if (digitalRead(5) == HIGH)
   {
-    Keyboard.press('a');
+    Keyboard.release('a');
     isPressed5 = false;
   }
   if (digitalRead(6) == HIGH)
   {
-    Keyboard.press('s');
+    Keyboard.release('s');
     isPressed6 = false;
   }
 
