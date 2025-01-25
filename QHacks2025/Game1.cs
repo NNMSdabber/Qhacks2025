@@ -59,6 +59,9 @@ namespace QHacks2025
         private Rectangle bgRec = new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         private Color bgColor = new Color(255, 255, 255, 255);
 
+        public Texture2D gridBg;
+        private Rectangle gridBgRec = new Rectangle(((SCREEN_WIDTH - 500) / 2 - 250) + 500, SCREEN_HEIGHT /2 - 250, 500, 500);
+
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
 
@@ -121,6 +124,8 @@ namespace QHacks2025
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             bg = Content.Load<Texture2D>("Images/bg");
+            
+            gridBg = Content.Load<Texture2D>("Images/gridBG");
 
             arrowImg[RIGHT] = Content.Load<Texture2D>("Images/Arrows/RightArrow");
             arrowImg[LEFT] = Content.Load<Texture2D>("Images/Arrows/LeftArrow");
@@ -430,6 +435,7 @@ namespace QHacks2025
                     break;
 
                 case GAME_PLAY:
+                    spriteBatch.Draw(gridBg, gridBgRec, bgColor);
 
                     spriteBatch.DrawString(labelFont,"Score: "+score,new Vector2(550,0),Color.Black);
                     spriteBatch.DrawString(labelFont, "Streak:" + streak, new Vector2(950,0), Color.Black);
