@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Name\\Documents\\QHacks2025REAL-REAL-REAL-REAL\\Qhacks2025\\QHacks2025\\QHacks2025.csproj": {}
+    "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\QHacks2025.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Name\\Documents\\QHacks2025REAL-REAL-REAL-REAL\\Qhacks2025\\QHacks2025\\QHacks2025.csproj": {
+    "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\QHacks2025.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Name\\Documents\\QHacks2025REAL-REAL-REAL-REAL\\Qhacks2025\\QHacks2025\\QHacks2025.csproj",
+        "projectUniqueName": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\QHacks2025.csproj",
         "projectName": "QHacks2025",
-        "projectPath": "C:\\Users\\Name\\Documents\\QHacks2025REAL-REAL-REAL-REAL\\Qhacks2025\\QHacks2025\\QHacks2025.csproj",
-        "packagesPath": "C:\\Users\\Name\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Name\\Documents\\QHacks2025REAL-REAL-REAL-REAL\\Qhacks2025\\QHacks2025\\obj\\",
+        "projectPath": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\QHacks2025.csproj",
+        "packagesPath": "C:\\Users\\Nmseg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nmseg\\OneDrive\\Desktop\\Qhacks25\\num2\\Qhacks2025\\QHacks2025\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Name\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nmseg\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -78,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
