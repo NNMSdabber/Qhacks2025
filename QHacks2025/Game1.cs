@@ -236,6 +236,11 @@ namespace QHacks2025
                     {
                         arrow.Update(gameTime);
 
+                        if (arrow.GetArrowRect().Y > SCREEN_HEIGHT && arrow.GetIsAvailable() == true)
+                        {
+                            streak = 0;
+                        }
+                        
                        if(kb.IsKeyDown(W_KEY) && !prevkb.IsKeyDown(W_KEY) && arrow.GetDirection() == UP)
                        {
                             if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
@@ -268,13 +273,13 @@ namespace QHacks2025
                         }
                        else if (kb.IsKeyDown(D_KEY) && !prevkb.IsKeyDown(D_KEY) && arrow.GetDirection() == RIGHT)
                        {
-                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
-                            {
-                                arrow.SetIsAvailable(false);
-                                score += 50;
-                                streak++;
-                            }
-                        }
+                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
+                           {
+                               arrow.SetIsAvailable(false);
+                               score += 50;
+                               streak++;
+                           }
+                       }
                     }
 
                     if(streak >= 10)
@@ -440,7 +445,6 @@ namespace QHacks2025
                 case END:
                     backToStartBtn.DrawButton(spriteBatch,Color.Purple);
                     break;
-
             }
 
             spriteBatch.End();
