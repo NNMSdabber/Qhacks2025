@@ -48,6 +48,7 @@ namespace QHacks2025
         public static Texture2D[] arrowImg = new Texture2D[MAX_ARROWS];
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
         private Arrow[] levelSonic = new Arrow[36];
+        private Arrow[] levelPokemon = new Arrow[15];
 
         
         public static Random rng = new Random();
@@ -58,6 +59,9 @@ namespace QHacks2025
         public KeyboardState prevkb = new KeyboardState();
 
         private int score = 0;
+
+        private Song sonic;
+        private Song pokemon;
 
 
         public Game1()
@@ -100,6 +104,9 @@ namespace QHacks2025
             arrowImg[LEFT] = Content.Load<Texture2D>("Images/Arrows/LeftArrow");
             arrowImg[UP] = Content.Load<Texture2D>("Images/Arrows/ArrowUp");
             arrowImg[DOWN] = Content.Load<Texture2D>("Images/Arrows/ArrowDown");
+
+            sonic = Content.Load<Song>("Audio/Music/Sonic");
+            pokemon = Content.Load<Song>("Audio/Music/icirrus");
             // TODO: use this.Content to load your game content here
 
             for (int i = 0; i < 30; i++)
@@ -108,6 +115,9 @@ namespace QHacks2025
             }
 
             SetUpSonic();
+            SetUpPokemon();
+
+            MediaPlayer.Play(pokemon);
 
         }
 
@@ -132,6 +142,7 @@ namespace QHacks2025
             prevkb = kb;
             kb = Keyboard.GetState();
 
+            
 
             switch (gameplayState) 
             {
@@ -141,39 +152,41 @@ namespace QHacks2025
 
                 case GAME_PLAY:
 
-                    foreach (Arrow arrow in levelSonic)
+                    foreach (Arrow arrow in levelPokemon)
                     {
                         arrow.Update(gameTime);
 
                        if(kb.IsKeyDown(W_KEY) && !prevkb.IsKeyDown(W_KEY) && arrow.GetDirection() == UP)
                        {
-                            if(arrow.GetArrowRect().Intersects(collisionRec))
+                            if(arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                             {
                                 score += 50;
+                                arrow.SetIsAvailable(false);
                             }
-
                        }
                        else if (kb.IsKeyDown(A_KEY) && !prevkb.IsKeyDown(A_KEY) && arrow.GetDirection() == LEFT)
                        {
-                           if (arrow.GetArrowRect().Intersects(collisionRec))
+                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
                                score += 50;
-                           }
-
+                               arrow.SetIsAvailable(false);
+                            }
                         }
                        else if (kb.IsKeyDown(S_KEY) && !prevkb.IsKeyDown(S_KEY) && arrow.GetDirection() == DOWN)
                        {
-                           if (arrow.GetArrowRect().Intersects(collisionRec))
+                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
                                score += 50;
-                           }
+                                arrow.SetIsAvailable(false);
+                            }
 
                         }
                        else if (kb.IsKeyDown(D_KEY) && !prevkb.IsKeyDown(D_KEY) && arrow.GetDirection() == RIGHT)
                        {
-                           if (arrow.GetArrowRect().Intersects(collisionRec))
+                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
                            {
-                               score += 50;
+                                arrow.SetIsAvailable(false);
+                                score += 50;
                            }
 
                        }
@@ -183,7 +196,10 @@ namespace QHacks2025
                     {
                         SetUpSonic();
                     }
-
+                    if (levelPokemon[14].GetArrowRect().Y > SCREEN_HEIGHT)
+                    {
+                        SetUpPokemon(); 
+                    }
                     break;
 
                 case END:
@@ -197,6 +213,31 @@ namespace QHacks2025
             // TODO: Add your update logic here
 
             base.Update(gameTime);
+        }
+
+        private void SetUpPokemon()
+        {
+            levelPokemon[0] = new Arrow(new Vector2(150, 0), 5, LEFT);
+            levelPokemon[1] = new Arrow(new Vector2(50, -150), 5, DOWN);
+
+            levelPokemon[2] = new Arrow(new Vector2(250, -250), 5, RIGHT);
+            levelPokemon[3] = new Arrow(new Vector2(350, -350), 5, UP);
+
+            levelPokemon[4] = new Arrow(new Vector2(150, -500), 5, LEFT);
+            levelPokemon[5] = new Arrow(new Vector2(250, -575), 5, RIGHT);
+
+            levelPokemon[6] = new Arrow(new Vector2(350, -700), 5, UP);
+            levelPokemon[7] = new Arrow(new Vector2(50, -800), 5, DOWN);
+
+            levelPokemon[8] = new Arrow(new Vector2(150, -900), 5, LEFT);
+            levelPokemon[9] = new Arrow(new Vector2(350, -1000), 5, UP);
+
+            levelPokemon[10] = new Arrow(new Vector2(50, -1200), 5, DOWN);
+            levelPokemon[11] = new Arrow(new Vector2(250, -1270), 5, RIGHT);
+
+            levelPokemon[12] = new Arrow(new Vector2(50, -1370), 5, DOWN);
+            levelPokemon[13] = new Arrow(new Vector2(250, -1390), 5, RIGHT);
+            levelPokemon[14] = new Arrow(new Vector2(250, -1480), 5, RIGHT);
         }
 
         private void SetUpSonic()
@@ -267,7 +308,7 @@ namespace QHacks2025
 
                 case GAME_PLAY:
       
-                    foreach (Arrow arrow in levelSonic)
+                    foreach (Arrow arrow in levelPokemon)
                     {
                         arrow.Draw(spriteBatch);
                     }

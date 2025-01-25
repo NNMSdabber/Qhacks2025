@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL/Qhacks2025/QHacks2025/Content/Images/blue-preview.png</SourceFile>
-  <SourceTime>2025-01-25T11:56:55.0547028-05:00</SourceTime>
-  <DestFile>C:/Users/Name/Documents/QHacks2025REAL-REAL-REAL/Qhacks2025/QHacks2025/bin/Debug/Content/Images/blue-preview.xnb</DestFile>
-  <DestTime>2025-01-25T12:10:28.1382722-05:00</DestTime>
+  <SourceFile>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/Content/Images/blue-preview.png</SourceFile>
+  <SourceTime>2025-01-25T12:11:37.3786563-05:00</SourceTime>
+  <DestFile>C:/Users/Nmseg/OneDrive/Desktop/Qhacks25/num2/Qhacks2025/QHacks2025/bin/Debug/Content/Images/blue-preview.xnb</DestFile>
+  <DestTime>2025-01-25T12:17:41.4249156-05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2023-11-11T18:28:59.7452565-05:00</ImporterTime>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2023-11-11T18:28:59.7452565-05:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
