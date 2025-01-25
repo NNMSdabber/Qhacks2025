@@ -96,6 +96,8 @@ namespace QHacks2025
 
         public static Texture2D amySpriteSheet;
         private Animation amyAnim;
+        
+        public static Texture2D buttonImg; 
 
         private static Song menuMusic;
         private static Song sonic;
@@ -158,18 +160,20 @@ namespace QHacks2025
             
             amySpriteSheet = Content.Load<Texture2D>("Images/Characters/amy");
             
+            buttonImg = Content.Load<Texture2D>("Images/button");
+            
             labelFont = Content.Load<SpriteFont>("Fonts/LabelFont");
             titleFont = Content.Load<SpriteFont>("Fonts/TitleFont");
 
             menuMusic = Content.Load<Song>("Audio/Music/geometry");
             MediaPlayer.Play(menuMusic);
 
-            startBtn = new Button(arrowImg[0], 400, 400, "Start");
+            startBtn = new Button(buttonImg, 400, 400, "Start");
             
-            sonicBtn = new Button(arrowImg[0], 100, 400, "Windy Hill");
-            icirrusBtn = new Button(arrowImg[0], 500, 400, "Icirrus City");
-            chugBtn = new Button(arrowImg[0], 900, 400, "Chug Jug With You");
-            backToStartBtn = new Button(arrowImg[0],500,400,"Press K to return to menu");
+            sonicBtn = new Button(buttonImg, 100, 400, "Windy Hill");
+            icirrusBtn = new Button(buttonImg, 500, 400, "Icirrus City");
+            chugBtn = new Button(buttonImg, 900, 400, "Chug Jug With You");
+            backToStartBtn = new Button(buttonImg,500,400,"Press K to return to menu");
             
             amyPosList[0] = new Vector2(gridBgRec.X + 175 ,  gridBgRec.Y + 175);
             amyPosList[1] = new Vector2(amyPosList[0].X - 200, amyPosList[0].Y);
@@ -409,7 +413,7 @@ namespace QHacks2025
                         SetUpChugJug();
                     }
 
-                    if(MediaPlayer.State == MediaState.Stopped)
+                    if(MediaPlayer.State == MediaState.Playing)
                     {
                         gameplayState = END;
                     }
