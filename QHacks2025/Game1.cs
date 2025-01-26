@@ -139,6 +139,8 @@ namespace QHacks2025
         private SoundEffect[] dialogFx = new SoundEffect[7];
         private SoundEffectInstance[] dialogFxInstance = new SoundEffectInstance[7];
 
+        private SoundEffect[] feedback = new SoundEffect[2]; 
+        
         private Texture2D[] backgrounds = new Texture2D[3];
 
         private Timer timer = new Timer(Timer.INFINITE_TIMER,true);
@@ -189,8 +191,6 @@ namespace QHacks2025
             
             amyFaceImg = Content.Load<Texture2D>("Images/Characters/AmyFace");
             sonicFaceImg = Content.Load<Texture2D>("Images/Characters/SonicFace");
-            
-            
 
             sonic = Content.Load<Song>("Audio/Music/sonic");
             pokemon = Content.Load<Song>("Audio/Music/icirrus");
@@ -251,6 +251,9 @@ namespace QHacks2025
                 dialogFx[i] = Content.Load<SoundEffect>("Audio/Dialog/"+i);
             }
             
+            feedback[0] = Content.Load<SoundEffect>("Audio/SFX/Good");
+            feedback[1] = Content.Load<SoundEffect>("Audio/SFX/Perfect");
+             
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
@@ -294,11 +297,12 @@ namespace QHacks2025
                     
                     if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
-                        MediaPlayer.Stop();
+                        /*MediaPlayer.Stop();
                         dialogFxInstance[0] = dialogFx[0].CreateInstance();
                         dialogFxInstance[0].Play();
                         dialogImg = amyFaceImg;
-                        gameplayState = DIALOG;
+                        gameplayState = DIALOG;*/
+                        gameplayState = SELECT;
                     }
                     bgColor.R += 1;
                     bgColor.G += 2;
@@ -401,6 +405,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -408,6 +413,11 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
+                               }
+                               else
+                               {
+                                   streak = 0;
                                }
                            }
                             
@@ -424,6 +434,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -431,6 +442,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
                                }
                            }
                         }
@@ -444,6 +456,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -451,6 +464,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
                                }
                            }
 
@@ -466,6 +480,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -473,6 +488,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
                                }
                            }
                        }
