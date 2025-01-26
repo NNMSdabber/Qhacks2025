@@ -297,12 +297,11 @@ namespace QHacks2025
                     
                     if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
-                        /*MediaPlayer.Stop();
+                        MediaPlayer.Stop();
                         dialogFxInstance[0] = dialogFx[0].CreateInstance();
                         dialogFxInstance[0].Play();
                         dialogImg = amyFaceImg;
-                        gameplayState = DIALOG;*/
-                        gameplayState = SELECT;
+                        gameplayState = DIALOG;
                     }
                     bgColor.R += 1;
                     bgColor.G += 2;
@@ -749,6 +748,7 @@ namespace QHacks2025
             SetUpPokemon();
             SetUpChugJug();
             MediaPlayer.Play(menuMusic);
+            dialogFxInstance = new SoundEffectInstance[7];
         }
 
         /// <summary>
