@@ -90,7 +90,7 @@ namespace QHacks2025
         
         public static SpriteFont titleFont;
 
-        private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,30);
+        private Rectangle collisionRec = new Rectangle(50,SCREEN_HEIGHT-100,400,30);
 
         public KeyboardState kb = new KeyboardState();
         public KeyboardState prevkb = new KeyboardState();
@@ -139,6 +139,8 @@ namespace QHacks2025
         private SoundEffect[] dialogFx = new SoundEffect[7];
         private SoundEffectInstance[] dialogFxInstance = new SoundEffectInstance[7];
 
+        private SoundEffect[] feedback = new SoundEffect[2]; 
+        
         private Texture2D[] backgrounds = new Texture2D[3];
 
         private Timer timer = new Timer(Timer.INFINITE_TIMER,true);
@@ -189,8 +191,6 @@ namespace QHacks2025
             
             amyFaceImg = Content.Load<Texture2D>("Images/Characters/AmyFace");
             sonicFaceImg = Content.Load<Texture2D>("Images/Characters/SonicFace");
-            
-            
 
             sonic = Content.Load<Song>("Audio/Music/sonic");
             pokemon = Content.Load<Song>("Audio/Music/icirrus");
@@ -251,6 +251,9 @@ namespace QHacks2025
                 dialogFx[i] = Content.Load<SoundEffect>("Audio/Dialog/"+i);
             }
             
+            feedback[0] = Content.Load<SoundEffect>("Audio/SFX/Good");
+            feedback[1] = Content.Load<SoundEffect>("Audio/SFX/Perfect");
+             
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
@@ -294,11 +297,12 @@ namespace QHacks2025
                     
                     if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
-                        MediaPlayer.Stop();
+                        /*MediaPlayer.Stop();
                         dialogFxInstance[0] = dialogFx[0].CreateInstance();
                         dialogFxInstance[0].Play();
                         dialogImg = amyFaceImg;
-                        gameplayState = DIALOG;
+                        gameplayState = DIALOG;*/
+                        gameplayState = SELECT;
                     }
                     bgColor.R += 1;
                     bgColor.G += 2;
@@ -401,6 +405,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -408,6 +413,11 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
+                               }
+                               else
+                               {
+                                   streak = 0;
                                }
                            }
                             
@@ -424,6 +434,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -431,6 +442,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
                                }
                            }
                         }
@@ -444,6 +456,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -451,6 +464,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
                                }
                            }
 
@@ -466,6 +480,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[0].CreateInstance().Play();
                                }
                                else if (arrow.GetArrowRect().Intersects(collisionRec))
                                {
@@ -473,6 +488,7 @@ namespace QHacks2025
                                    
                                    streak++;
                                    arrow.SetIsAvailable(false);
+                                   feedback[1].CreateInstance().Play();
                                }
                            }
                        }
@@ -795,6 +811,24 @@ namespace QHacks2025
                         spriteBatch.Draw(collImg, collRects[i], Color.White);
                         if (i < NUM_COLL - 1) spriteBatch.Draw(collImg, pathRects[i], Color.Gray * 0.25f);
                     }
+                    
+                    
+                    spriteBatch.Draw(collImg,new Rectangle(collisionRec.X, collisionRec.Y + collisionRec.Height, collisionRec.Width + 1, SCREEN_HEIGHT - collisionRec.Y + collisionRec.Height), Color.Black);
+                    spriteBatch.Draw(arrowImg[3], new Rectangle(collRects[0].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    spriteBatch.Draw(arrowImg[1], new Rectangle(collRects[1].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    spriteBatch.Draw(arrowImg[0], new Rectangle(collRects[2].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    spriteBatch.Draw(arrowImg[2], new Rectangle(collRects[3].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    if(kb.IsKeyDown(S_KEY))
+                        spriteBatch.Draw(arrowImg[3], new Rectangle(collRects[0].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+
+                    if(kb.IsKeyDown(A_KEY))
+                        spriteBatch.Draw(arrowImg[1], new Rectangle(collRects[1].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+
+                    if(kb.IsKeyDown(D_KEY))
+                        spriteBatch.Draw(arrowImg[0], new Rectangle(collRects[2].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+                    if(kb.IsKeyDown(W_KEY))
+                        spriteBatch.Draw(arrowImg[2], new Rectangle(collRects[3].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+
                     
                     spriteBatch.Draw(collImg,collisionRec,Color.DarkGray * 0.5f);
                     break;
