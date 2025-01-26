@@ -90,7 +90,7 @@ namespace QHacks2025
         
         public static SpriteFont titleFont;
 
-        private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,30);
+        private Rectangle collisionRec = new Rectangle(50,SCREEN_HEIGHT-100,400,30);
 
         public KeyboardState kb = new KeyboardState();
         public KeyboardState prevkb = new KeyboardState();
@@ -787,6 +787,24 @@ namespace QHacks2025
                         spriteBatch.Draw(collImg, collRects[i], Color.White);
                         if (i < NUM_COLL - 1) spriteBatch.Draw(collImg, pathRects[i], Color.Gray * 0.25f);
                     }
+                    
+                    
+                    spriteBatch.Draw(collImg,new Rectangle(collisionRec.X, collisionRec.Y + collisionRec.Height, collisionRec.Width + 1, SCREEN_HEIGHT - collisionRec.Y + collisionRec.Height), Color.Black);
+                    spriteBatch.Draw(arrowImg[3], new Rectangle(collRects[0].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    spriteBatch.Draw(arrowImg[1], new Rectangle(collRects[1].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    spriteBatch.Draw(arrowImg[0], new Rectangle(collRects[2].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    spriteBatch.Draw(arrowImg[2], new Rectangle(collRects[3].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.White);
+                    if(kb.IsKeyDown(S_KEY))
+                        spriteBatch.Draw(arrowImg[3], new Rectangle(collRects[0].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+
+                    if(kb.IsKeyDown(A_KEY))
+                        spriteBatch.Draw(arrowImg[1], new Rectangle(collRects[1].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+
+                    if(kb.IsKeyDown(D_KEY))
+                        spriteBatch.Draw(arrowImg[0], new Rectangle(collRects[2].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+                    if(kb.IsKeyDown(W_KEY))
+                        spriteBatch.Draw(arrowImg[2], new Rectangle(collRects[3].X, collisionRec.Y + collisionRec.Height, arrowImg[0].Width,arrowImg[0].Height - 30), Color.Lime);
+
                     
                     spriteBatch.Draw(collImg,collisionRec,Color.DarkGray * 0.5f);
                     break;
