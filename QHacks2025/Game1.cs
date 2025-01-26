@@ -552,6 +552,7 @@ namespace QHacks2025
                     if(kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
                         gameplayState = MENU;
+                        Reset();
                         MediaPlayer.Play(menuMusic);
                     }
 
@@ -639,11 +640,8 @@ namespace QHacks2025
                             {
                                 gameplayState = SELECT;
                             }
-                            
                             break;
-                            
                     }
-                
                     break;
 
             }
@@ -742,6 +740,17 @@ namespace QHacks2025
             }
         }
 
+        public void Reset()
+        {
+            dgNum = 0;
+            score = 0;
+            
+            SetUpSonic();
+            SetUpPokemon();
+            SetUpChugJug();
+            MediaPlayer.Play(menuMusic);
+        }
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -763,7 +772,6 @@ namespace QHacks2025
                     break;
 
                 case SELECT:
-
                     switch (curMenuNum)
                     {
                         case SONIC_LEVEL_DATA_IDX:
