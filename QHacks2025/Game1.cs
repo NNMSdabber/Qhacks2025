@@ -84,7 +84,7 @@ namespace QHacks2025
 
         public static Texture2D barImg;
         
-        private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15], new Arrow[5]};
+        private Arrow[][] levelData = new Arrow[][] { new Arrow[28], new Arrow[15], new Arrow[5]};
 
         public static SpriteFont labelFont;
         
@@ -215,7 +215,7 @@ namespace QHacks2025
             sonicBtn = new Button(buttonImg, 100, 350, "Windy Hill");
             icirrusBtn = new Button(buttonImg, 500, 350, "Icirrus City");
             chugBtn = new Button(buttonImg, 900, 350, "Chug Jug");
-            backToStartBtn = new Button(buttonImg,500,400,"Press K to return to menu");
+            backToStartBtn = new Button(buttonImg,500,400,"Press green to return to menu");
 
             timer = new Timer(Timer.INFINITE_TIMER,true);
             
@@ -523,7 +523,7 @@ namespace QHacks2025
                         streak = 0;
                     }
 
-                    if (levelData[SONIC_LEVEL_DATA_IDX][34].GetArrowRect().Y > SCREEN_HEIGHT)
+                    if (levelData[SONIC_LEVEL_DATA_IDX][27].GetArrowRect().Y > SCREEN_HEIGHT)
                     {
                         SetUpSonic();
                     }
@@ -558,9 +558,12 @@ namespace QHacks2025
                 break;
                 
                 case DIALOG:
+                    if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
+                    {
+                        gameplayState = SELECT;
+                    }
                     switch (dgNum)
                     {
-                        //TODO: ADD VOICELINES
                         case 0:
                             dialogStr = "Sonic I need to tell you something...";
                             dialogImg = amyFaceImg;
@@ -679,48 +682,40 @@ namespace QHacks2025
         {
             levelData[SONIC_LEVEL_DATA_IDX][0] = new Arrow(new Vector2(50,0),7,DOWN);
             levelData[SONIC_LEVEL_DATA_IDX][1] = new Arrow(new Vector2(150,-100), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][2] = new Arrow(new Vector2(50, -150), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][3] = new Arrow(new Vector2(50, -250), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][2] = new Arrow(new Vector2(50, -250), 7, DOWN);
 
-            levelData[SONIC_LEVEL_DATA_IDX][4] = new Arrow(new Vector2(50, -400), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][5] = new Arrow(new Vector2(150, -450), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][6] = new Arrow(new Vector2(250, -470), 7, RIGHT);
-            levelData[SONIC_LEVEL_DATA_IDX][7] = new Arrow(new Vector2(350, -500), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][3] = new Arrow(new Vector2(50, -400), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][4] = new Arrow(new Vector2(150, -450), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][5] = new Arrow(new Vector2(250, -470), 7, RIGHT);
 
-            levelData[SONIC_LEVEL_DATA_IDX][8] = new Arrow(new Vector2(50, -650), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][9] = new Arrow(new Vector2(150, -700), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][10] = new Arrow(new Vector2(250, -750), 7, RIGHT);
-            levelData[SONIC_LEVEL_DATA_IDX][11] = new Arrow(new Vector2(150, -800), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][6] = new Arrow(new Vector2(50, -650), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][7] = new Arrow(new Vector2(150, -700), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][8] = new Arrow(new Vector2(250, -750), 7, RIGHT);
 
-            levelData[SONIC_LEVEL_DATA_IDX][12] = new Arrow(new Vector2(50, -950), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][13] = new Arrow(new Vector2(150, -950), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][14] = new Arrow(new Vector2(250, -1000), 7, RIGHT);
-            levelData[SONIC_LEVEL_DATA_IDX][15] = new Arrow(new Vector2(150, -1075), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][9] = new Arrow(new Vector2(50, -950), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][10] = new Arrow(new Vector2(150, -950), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][11] = new Arrow(new Vector2(250, -1000), 7, RIGHT);
 
-            levelData[SONIC_LEVEL_DATA_IDX][16] = new Arrow(new Vector2(150, -1250), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][17] = new Arrow(new Vector2(150, -1250), 7, RIGHT);
-            levelData[SONIC_LEVEL_DATA_IDX][18] = new Arrow(new Vector2(50, -1300), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][19] = new Arrow(new Vector2(350, -1300), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][12] = new Arrow(new Vector2(150, -1250), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][13] = new Arrow(new Vector2(150, -1250), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][14] = new Arrow(new Vector2(50, -1300), 7, DOWN);
 
-            levelData[SONIC_LEVEL_DATA_IDX][20] = new Arrow(new Vector2(50, -1400), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][21] = new Arrow(new Vector2(150, -1500), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][22] = new Arrow(new Vector2(50, -1550), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][23] = new Arrow(new Vector2(50, -1650), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][15] = new Arrow(new Vector2(50, -1400), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][16] = new Arrow(new Vector2(150, -1500), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][17] = new Arrow(new Vector2(50, -1550), 7, DOWN);
 
-            levelData[SONIC_LEVEL_DATA_IDX][24] = new Arrow(new Vector2(50, -1800), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][25] = new Arrow(new Vector2(150, -1850), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][26] = new Arrow(new Vector2(250, -1850), 7, RIGHT);
-            levelData[SONIC_LEVEL_DATA_IDX][27] = new Arrow(new Vector2(350, -1900), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][18] = new Arrow(new Vector2(50, -1800), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][19] = new Arrow(new Vector2(150, -1850), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][20] = new Arrow(new Vector2(250, -1850), 7, RIGHT);
 
-            levelData[SONIC_LEVEL_DATA_IDX][28] = new Arrow(new Vector2(50, -2050), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][29] = new Arrow(new Vector2(150, -2050), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][30] = new Arrow(new Vector2(250, -2100), 7, RIGHT);
-            levelData[SONIC_LEVEL_DATA_IDX][31] = new Arrow(new Vector2(150, -2150), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][21] = new Arrow(new Vector2(50, -2050), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][22] = new Arrow(new Vector2(150, -2050), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][23] = new Arrow(new Vector2(250, -2100), 7, RIGHT);
 
-            levelData[SONIC_LEVEL_DATA_IDX][32] = new Arrow(new Vector2(150, -2300), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][33] = new Arrow(new Vector2(250, -2300), 7, RIGHT);
-            levelData[SONIC_LEVEL_DATA_IDX][34] = new Arrow(new Vector2(50, -2450), 7, DOWN);
-            levelData[SONIC_LEVEL_DATA_IDX][35] = new Arrow(new Vector2(350, -2450), 7, UP);
+            levelData[SONIC_LEVEL_DATA_IDX][24] = new Arrow(new Vector2(150, -2300), 7, LEFT);
+            levelData[SONIC_LEVEL_DATA_IDX][25] = new Arrow(new Vector2(250, -2300), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][26] = new Arrow(new Vector2(50, -2450), 7, DOWN);
+            levelData[SONIC_LEVEL_DATA_IDX][27] = new Arrow(new Vector2(350, -2450), 7, UP);
         }
 
         public void SetUpChugJug()
@@ -809,7 +804,7 @@ namespace QHacks2025
                         if (i < NUM_COLL - 1) spriteBatch.Draw(collImg, pathRects[i], Color.Gray * 0.25f);
                     }
                     
-                    spriteBatch.Draw(barImg,collisionRec,Color.White * 0.5f);
+                    spriteBatch.Draw(collImg,collisionRec,Color.DarkGray * 0.5f);
                     break;
 
                 case END:

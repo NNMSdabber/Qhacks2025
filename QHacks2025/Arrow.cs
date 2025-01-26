@@ -48,7 +48,6 @@ namespace QHacks2025
             if (isAvailable)
             {
                 spriteBatch.Draw(Game1.arrowImg[direction], arrowRec, Color.White);
-                spriteBatch.Draw(Game1.collImg, arrow2Rec, Color.White);
             }        
         }
 
