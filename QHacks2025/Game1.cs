@@ -97,6 +97,7 @@ namespace QHacks2025
 
         private int score = 0;
         private int streak = 0;
+        private int highStreak = 0;
 
         public MouseState mouse;
         public MouseState mousePrev;
@@ -136,8 +137,8 @@ namespace QHacks2025
         private Texture2D dialogImg;
         private Rectangle dialogRect = new Rectangle(50,50,200,200);
         Vector2 dialogPos = new Vector2(300,50);
-        private SoundEffect[] dialogFx = new SoundEffect[7];
-        private SoundEffectInstance[] dialogFxInstance = new SoundEffectInstance[7];
+        private SoundEffect[] dialogFx = new SoundEffect[25];
+        private SoundEffectInstance[] dialogFxInstance = new SoundEffectInstance[25];
 
         private SoundEffect[] feedback = new SoundEffect[2]; 
         
@@ -383,7 +384,8 @@ namespace QHacks2025
                     break;
 
                 case GAME_PLAY:
-                    
+                    if (streak > highStreak)
+                        highStreak = streak;
                     foreach (Arrow arrow in levelData[currLevel])
                     {
                         arrow.Update(gameTime);
@@ -537,7 +539,27 @@ namespace QHacks2025
 
                     if(MediaPlayer.State != MediaState.Playing)
                     {
-                        gameplayState = END;
+                        if (highStreak <= 2)
+                        {
+                            dgNum = 19;
+                            dialogFxInstance[19] = dialogFx[19].CreateInstance();
+                            dialogFxInstance[19].Play();
+                            
+                        }
+                            
+                        else if (highStreak <= 4)
+                        {
+                            dgNum = 13;
+                            dialogFxInstance[13] = dialogFx[13].CreateInstance();
+                            dialogFxInstance[13].Play();
+                        }
+                        else if (highStreak <= 6)
+                        {
+                            dgNum = 7;
+                            dialogFxInstance[7] = dialogFx[7].CreateInstance();
+                            dialogFxInstance[7].Play();
+                        }
+                        gameplayState = DIALOG;
                     }
                     
                     amyAnim.Update(gameTime);
@@ -640,6 +662,181 @@ namespace QHacks2025
                                 gameplayState = SELECT;
                             }
                             break;
+                        case 7:
+                            dialogStr = "WOW AMY I CANT BELIEVE IT \nYOU CAN DANCE!";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[7].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[8] = dialogFx[8].CreateInstance();
+                                dialogFxInstance[8].Play();
+                                dgNum = 8;
+                            }
+                            break;
+                        case 8:
+                            dialogStr = "I told you I could dance Sonic";
+                            dialogImg = amyFaceImg;
+                            if (dialogFxInstance[8].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[9] = dialogFx[9].CreateInstance();
+                                dialogFxInstance[9].Play();
+                                dgNum = 9;
+                            }
+                            break;
+                        case 9:
+                            dialogStr = "So will you be mine?";
+                            dialogImg = amyFaceImg;
+                            if (dialogFxInstance[9].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[10] = dialogFx[10].CreateInstance();
+                                dialogFxInstance[10].Play();
+                                dgNum = 10;
+                            }
+                            break;
+                        case 10:
+                            dialogStr = "Of course!";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[10].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[11] = dialogFx[11].CreateInstance();
+                                dialogFxInstance[11].Play();
+                                dgNum = 11;
+                            }
+                            break;
+                        case 11:
+                            dialogStr = "I love you Amy";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[11].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[12] = dialogFx[12].CreateInstance();
+                                dialogFxInstance[12].Play();
+                                dgNum = 12;
+                            }
+                            break;
+                        case 12:
+                            dialogStr = "I love you too Sonic";
+                            dialogImg = amyFaceImg;
+                            if (dialogFxInstance[12].State == SoundState.Stopped)
+                            {
+                                gameplayState = END;
+                            }
+                            break;
+                        case 13:
+                            dialogStr = "Hmmm...";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[13].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[14] = dialogFx[14].CreateInstance();
+                                dialogFxInstance[14].Play();
+                                dgNum = 14;
+                            }
+                            break;
+                        case 14:
+                            dialogStr = "I think you're going to need to \npractice if you want to be mine";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[14].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[15] = dialogFx[15].CreateInstance();
+                                dialogFxInstance[15].Play();
+                                dgNum = 15;
+                            }
+                            break;
+                        case 15:
+                            dialogStr = "Why don't you lock in and get better";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[15].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[16] = dialogFx[16].CreateInstance();
+                                dialogFxInstance[16].Play();
+                                dgNum = 16;
+                            }
+                            break;
+                        case 16:
+                            dialogStr = "B- bb but..";
+                            dialogImg = amyFaceImg;
+                            if (dialogFxInstance[16].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[17] = dialogFx[17].CreateInstance();
+                                dialogFxInstance[17].Play();
+                                dgNum = 17;
+                            }
+                            break;
+                        case 17:
+                            dialogStr = "I don't think this is going \nto work out.. Bye amy.";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[17].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[18] = dialogFx[18].CreateInstance();
+                                dialogFxInstance[18].Play();
+                                dgNum = 18;
+                            }
+                            break;
+                        case 18:
+                            dialogStr = "Sonic.. Sonic??";
+                            dialogImg = amyFaceImg;
+                            if (dialogFxInstance[18].State == SoundState.Stopped)
+                            {
+                                gameplayState = END;
+                            }
+                            break;
+                        case 19:
+                            dialogStr = "Hmmm...";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[19].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[20] = dialogFx[20].CreateInstance();
+                                dialogFxInstance[20].Play();
+                                dgNum = 20;
+                            }
+                            break;
+                        case 20:
+                            dialogStr = "I think you're going to need to \npractice if you want to be mine";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[20].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[21] = dialogFx[21].CreateInstance();
+                                dialogFxInstance[21].Play();
+                                dgNum = 21;
+                            }
+                            break;
+                        case 21:
+                            dialogStr = "Why don't you lock in and get better";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[21].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[22] = dialogFx[22].CreateInstance();
+                                dialogFxInstance[22].Play();
+                                dgNum = 22;
+                            }
+                            break;
+                        case 22:
+                            dialogStr = "B- bb but..";
+                            dialogImg = amyFaceImg;
+                            if (dialogFxInstance[22].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[23] = dialogFx[23].CreateInstance();
+                                dialogFxInstance[23].Play();
+                                dgNum = 23;
+                            }
+                            break;
+                        case 23:
+                            dialogStr = "I don't think this is going to work out.. \nWhy dont you ask Shadow instead.";
+                            dialogImg = sonicFaceImg;
+                            if (dialogFxInstance[23].State == SoundState.Stopped)
+                            {
+                                dialogFxInstance[24] = dialogFx[24].CreateInstance();
+                                dialogFxInstance[24].Play();
+                                dgNum = 24;
+                            }
+                            break;
+                        case 24:
+                            dialogStr = "Sonic.. Sonic??";
+                            dialogImg = amyFaceImg;
+                            if (dialogFxInstance[24].State == SoundState.Stopped)
+                            {
+                                gameplayState = END;
+                            }
+                            break;
+                        
                     }
                     break;
 
@@ -748,7 +945,7 @@ namespace QHacks2025
             SetUpPokemon();
             SetUpChugJug();
             MediaPlayer.Play(menuMusic);
-            dialogFxInstance = new SoundEffectInstance[7];
+            dialogFxInstance = new SoundEffectInstance[25];
         }
 
         /// <summary>
@@ -838,6 +1035,7 @@ namespace QHacks2025
                     break;
                 
                 case DIALOG:
+                    spriteBatch.Draw(bg, bgRec, Color.Black);
                     spriteBatch.Draw(dialogImg,dialogRect,Color.White);
                     spriteBatch.DrawString(labelFont,dialogStr,dialogPos,Color.White);
                     break;

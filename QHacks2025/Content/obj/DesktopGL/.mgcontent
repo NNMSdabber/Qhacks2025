@@ -6,11 +6,29 @@
   <SourceFiles>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/0.wav</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/1.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/10.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/11.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/12.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/13.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/14.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/15.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/16.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/17.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/18.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/19.wav</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/2.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/20.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/21.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/22.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/23.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/24.wav</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/3.wav</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/4.wav</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/5.wav</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/6.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/7.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/8.wav</File>
+    <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Dialog/9.wav</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/chug_jug.mp3</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/geometry.mp3</File>
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Audio/Music/icirrus.mp3</File>
@@ -37,6 +55,24 @@
     <File>/home/ashton/RiderProjects/Qhacks2025/QHacks2025/Content/Images/gridBG.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
