@@ -539,25 +539,25 @@ namespace QHacks2025
 
                     if(MediaPlayer.State != MediaState.Playing)
                     {
-                        if (highStreak <= 2)
+                        if (highStreak >= 2)
                         {
-                            dgNum = 19;
-                            dialogFxInstance[19] = dialogFx[19].CreateInstance();
-                            dialogFxInstance[19].Play();
+                            dgNum = 7;
+                            dialogFxInstance[7] = dialogFx[7].CreateInstance();
+                            dialogFxInstance[7].Play();
                             
                         }
                             
-                        else if (highStreak <= 4)
+                        else if (highStreak >= 4)
                         {
                             dgNum = 13;
                             dialogFxInstance[13] = dialogFx[13].CreateInstance();
                             dialogFxInstance[13].Play();
                         }
-                        else if (highStreak <= 6)
+                        else if (highStreak >= 6)
                         {
-                            dgNum = 7;
-                            dialogFxInstance[7] = dialogFx[7].CreateInstance();
-                            dialogFxInstance[7].Play();
+                            dgNum = 19;
+                            dialogFxInstance[19] = dialogFx[10].CreateInstance();
+                            dialogFxInstance[19].Play();
                         }
                         gameplayState = DIALOG;
                     }
