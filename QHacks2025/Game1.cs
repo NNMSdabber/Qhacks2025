@@ -215,7 +215,7 @@ namespace QHacks2025
             sonicBtn = new Button(buttonImg, 100, 350, "Windy Hill");
             icirrusBtn = new Button(buttonImg, 500, 350, "Icirrus City");
             chugBtn = new Button(buttonImg, 900, 350, "Chug Jug");
-            backToStartBtn = new Button(buttonImg,500,400,"Press K to return to menu");
+            backToStartBtn = new Button(buttonImg,500,400,"Press green to return to menu");
 
             timer = new Timer(Timer.INFINITE_TIMER,true);
             
