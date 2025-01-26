@@ -36,6 +36,7 @@ namespace QHacks2025
         public const int END = 2;
         public const int SELECT = 3;
         public const int RESULTS = 4;
+        public const int DIALOG = 5;
 
         private const int SONIC_LEVEL_DATA_IDX = 0;
         private const int ICIRRUS_LEVEL_DATA_IDX = 1;
@@ -90,6 +91,14 @@ namespace QHacks2025
 
         private int score = 0;
         private int streak = 0;
+        
+        // Dialog
+        private int dgNum = 0;
+        private string dialogStr;
+        private Texture2D dialogImg;
+        private Rectangle dialogRect = new Rectangle(50,50,200,200);
+        Vector2 dialogPos = new Vector2(300,50);
+        
 
         public MouseState mouse;
         public MouseState mousePrev;
@@ -413,7 +422,7 @@ namespace QHacks2025
                         SetUpChugJug();
                     }
 
-                    if(MediaPlayer.State == MediaState.Playing)
+                    if(MediaPlayer.State != MediaState.Playing)
                     {
                         gameplayState = END;
                     }
@@ -430,8 +439,50 @@ namespace QHacks2025
                     {
                         gameplayState = MENU;
                     }
-
-                break;
+                    break;
+                // case DIALOG:
+                //     switch (dgNum)
+                //     {
+                //         //TODO: ADD VOICELINES
+                //         case 0:
+                //             dialogStr = "Sonic I need to tell you something...";
+                //             dialogImg = amyFaceImg;
+                //             
+                //             break; 
+                //         case 1:
+                //             dialogStr = "Whats up amy?";
+                //             dialogImg = sonicFaceImg;
+                //             
+                //             break; 
+                //         case 2:
+                //             dialogStr = "I- i love you sonic";
+                //             dialogImg = amyFaceImg;
+                //             
+                //             break; 
+                //         case 3:
+                //             dialogStr = "Ughhh no way! I only date hedgehogs who can dance";
+                //             dialogImg = sonicFaceImg;
+                //             
+                //             break;
+                //         case 4:
+                //             dialogStr = "B-bb but I can dance I promise.";
+                //             dialogImg = amyFaceImg;
+                //             
+                //             break; 
+                //         case 5:
+                //             dialogStr = "Prove it. Finish one of my songs and show me some moves";
+                //             dialogImg = sonicFaceImg;
+                //             
+                //             break; 
+                //         case 6:
+                //             dialogStr = "Ok sonic i'll show you";
+                //             dialogImg = amyFaceImg;
+                //             
+                //             break;
+                //             
+                //     }
+                //
+                //     break;
 
             }
 
@@ -539,7 +590,7 @@ namespace QHacks2025
             {
                 case MENU:
                     startBtn.DrawButton(spriteBatch, Color.Purple);
-                    spriteBatch.DrawString(titleFont, "Robt QHacks 2025", Vector2.Zero, Color.Red);
+                    spriteBatch.DrawString(titleFont, "Hedgehog Dating Revolution", Vector2.Zero, Color.Red);
                     break;
 
                 case SELECT:
@@ -584,6 +635,12 @@ namespace QHacks2025
                 case END:
                     backToStartBtn.DrawButton(spriteBatch,Color.Purple);
                     break;
+                
+                case DIALOG:
+                    spriteBatch.Draw(dialogImg,dialogRect,Color.White);
+                    spriteBatch.DrawString(labelFont,dialogStr,dialogPos,Color.White);
+                    break;
+                
             }
 
             spriteBatch.End();
