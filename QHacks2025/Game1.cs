@@ -7,10 +7,8 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml;
-using System.Xml.Schema;
+
 
 namespace QHacks2025
 {
@@ -162,14 +160,12 @@ namespace QHacks2025
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = SCREEN_WIDTH;
             graphics.PreferredBackBufferHeight = SCREEN_HEIGHT;
             graphics.ApplyChanges();
 
             IsMouseVisible = true;
-
-
+            
             base.Initialize();
         }
 
@@ -337,12 +333,15 @@ namespace QHacks2025
                         {
                             case SONIC_LEVEL_DATA_IDX:
                                 MediaPlayer.Play(sonic);
+                                SetUpSonic();
                                 break;
                             case ICIRRUS_LEVEL_DATA_IDX:
                                 MediaPlayer.Play(pokemon);
+                                SetUpPokemon();
                                 break;
                             case CHUG_JUG_LEVEL_DATA_IDX:
                                 MediaPlayer.Play(chugJugWithYou);
+                                SetUpChugJug();
                                 break;
                         }
                     }
@@ -749,7 +748,7 @@ namespace QHacks2025
             {
                 case MENU:
                     startBtn.DrawButton(spriteBatch, Color.Purple);
-                    spriteBatch.DrawString(titleFont, "Dance Dance Evolution", new Vector2(20,yCord), Color.Red);
+                    spriteBatch.DrawString(titleFont, "Dance Date Revolution", new Vector2(20,yCord), Color.Red);
                     break;
 
                 case SELECT:
