@@ -26,6 +26,8 @@ namespace QHacks2025
         public const Keys SELECT_KEY = Keys.K;
 
         public const int MAX_ARROWS = 4;
+        public const int NUM_COLL = 5;
+        
         public const int RIGHT = 0;
         public const int LEFT = 1;
         public const int UP = 2;
@@ -36,7 +38,6 @@ namespace QHacks2025
         public const int END = 2;
         public const int SELECT = 3;
         public const int RESULTS = 4;
-        public const int DIALOG = 5;
 
         private const int SONIC_LEVEL_DATA_IDX = 0;
         private const int ICIRRUS_LEVEL_DATA_IDX = 1;
@@ -58,6 +59,8 @@ namespace QHacks2025
         private int currLevel = SONIC_LEVEL_DATA_IDX;
         public static Random rng = new Random();
 
+        private float yCord = 10;
+        
         private Button startBtn;
 
         private int curMenuNum = SONIC_LEVEL_DATA_IDX;
@@ -78,6 +81,24 @@ namespace QHacks2025
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
 
         public static Texture2D barImg;
+        public static Texture2D collImg;
+
+        private Rectangle[] collRects =
+        {
+            new Rectangle(50, 0, 1, SCREEN_HEIGHT), 
+            new Rectangle(150, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(250, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(350, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(450, 0, 1, SCREEN_HEIGHT)
+        };
+        
+        private Rectangle[] pathRects =
+        {
+            new Rectangle(52, 0, 98, SCREEN_HEIGHT), 
+            new Rectangle(152, 0, 98, SCREEN_HEIGHT),
+            new Rectangle(252, 0, 98, SCREEN_HEIGHT),
+            new Rectangle(352, 0, 98, SCREEN_HEIGHT),
+        };
         
         private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15], new Arrow[5]};
 
@@ -91,14 +112,6 @@ namespace QHacks2025
 
         private int score = 0;
         private int streak = 0;
-        
-        // Dialog
-        private int dgNum = 0;
-        private string dialogStr;
-        private Texture2D dialogImg;
-        private Rectangle dialogRect = new Rectangle(50,50,200,200);
-        Vector2 dialogPos = new Vector2(300,50);
-        
 
         public MouseState mouse;
         public MouseState mousePrev;
@@ -114,6 +127,8 @@ namespace QHacks2025
         private static Song chugJugWithYou;
 
         private Texture2D[] backgrounds = new Texture2D[3];
+
+        private Timer timer = new Timer(Timer.INFINITE_TIMER,true);
 
 
         public Game1()
@@ -177,12 +192,16 @@ namespace QHacks2025
             menuMusic = Content.Load<Song>("Audio/Music/geometry");
             MediaPlayer.Play(menuMusic);
 
-            startBtn = new Button(buttonImg, 400, 400, "Start");
+            timer.Activate();
             
-            sonicBtn = new Button(buttonImg, 100, 400, "Windy Hill");
-            icirrusBtn = new Button(buttonImg, 500, 400, "Icirrus City");
-            chugBtn = new Button(buttonImg, 900, 400, "Chug Jug With You");
+            startBtn = new Button(buttonImg, 600, 350, "Start");
+            
+            sonicBtn = new Button(buttonImg, 100, 350, "Windy Hill");
+            icirrusBtn = new Button(buttonImg, 500, 350, "Icirrus City");
+            chugBtn = new Button(buttonImg, 900, 350, "Chug Jug");
             backToStartBtn = new Button(buttonImg,500,400,"Press K to return to menu");
+
+            timer = new Timer(Timer.INFINITE_TIMER,true);
             
             amyPosList[0] = new Vector2(gridBgRec.X + 175 ,  gridBgRec.Y + 175);
             amyPosList[1] = new Vector2(amyPosList[0].X - 200, amyPosList[0].Y);
@@ -203,6 +222,14 @@ namespace QHacks2025
                 TOTAL_FRAMES_MOVE, START_FRAME, IDLE_FRAME, Animation.ANIMATE_FOREVER, ANIM_DURATION_MOVE, amyPos, true);
             amyAnim.Activate(true);
             
+            collImg = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            Color[] data = new Color[1 * 1];
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = Color.White;
+            }
+            collImg.SetData(data);
+            
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
@@ -214,7 +241,11 @@ namespace QHacks2025
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            if (collImg != null)
+            {
+                collImg.Dispose();
+                collImg = null;
+            }
         }
 
         /// <summary>
@@ -232,17 +263,23 @@ namespace QHacks2025
             mousePrev = mouse;
             mouse = Mouse.GetState();
 
+            timer.Update(gameTime.ElapsedGameTime.TotalMilliseconds);
+            
+            yCord = (float)(25 * Math.Sin(0.0025*timer.GetTimePassed()));
+            
             switch (gameplayState) 
             {
                 case MENU:
                     if (startBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
-                        if(startBtn.CheckIfClicked(mouse, mousePrev))
+                        if (startBtn.CheckIfClicked(mouse, mousePrev))
                         {
                             gameplayState = SELECT;
+                            score = 0;
                         }
                     }
 
+                    
                     if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
                         gameplayState = SELECT;
@@ -291,30 +328,30 @@ namespace QHacks2025
                     {
                         if (sonicBtn.CheckIfClicked(mouse, mousePrev))
                         {
-                            gameplayState = GAME_PLAY;
-                            currLevel = SONIC_LEVEL_DATA_IDX;
                             MediaPlayer.Stop();
                             MediaPlayer.Play(sonic);
+                            gameplayState = GAME_PLAY;
+                            currLevel = SONIC_LEVEL_DATA_IDX;
                         }
                     }
                     else if (icirrusBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
                         if (icirrusBtn.CheckIfClicked(mouse, mousePrev))
                         {
-                            gameplayState = GAME_PLAY;
-                            currLevel = ICIRRUS_LEVEL_DATA_IDX;
                             MediaPlayer.Stop();
                             MediaPlayer.Play(pokemon);
+                            gameplayState = GAME_PLAY;
+                            currLevel = ICIRRUS_LEVEL_DATA_IDX;
                         }
                     }
                     else if (chugBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
                         if (chugBtn.CheckIfClicked(mouse, mousePrev))
                         {
-                            gameplayState = GAME_PLAY;
-                            currLevel = CHUG_JUG_LEVEL_DATA_IDX;
                             MediaPlayer.Stop();
                             MediaPlayer.Play(chugJugWithYou);
+                            gameplayState = GAME_PLAY;
+                            currLevel = CHUG_JUG_LEVEL_DATA_IDX;
                         }
                     }
                     
@@ -438,51 +475,10 @@ namespace QHacks2025
                     if(kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
                         gameplayState = MENU;
+                        MediaPlayer.Play(menuMusic);
                     }
-                    break;
-                // case DIALOG:
-                //     switch (dgNum)
-                //     {
-                //         //TODO: ADD VOICELINES
-                //         case 0:
-                //             dialogStr = "Sonic I need to tell you something...";
-                //             dialogImg = amyFaceImg;
-                //             
-                //             break; 
-                //         case 1:
-                //             dialogStr = "Whats up amy?";
-                //             dialogImg = sonicFaceImg;
-                //             
-                //             break; 
-                //         case 2:
-                //             dialogStr = "I- i love you sonic";
-                //             dialogImg = amyFaceImg;
-                //             
-                //             break; 
-                //         case 3:
-                //             dialogStr = "Ughhh no way! I only date hedgehogs who can dance";
-                //             dialogImg = sonicFaceImg;
-                //             
-                //             break;
-                //         case 4:
-                //             dialogStr = "B-bb but I can dance I promise.";
-                //             dialogImg = amyFaceImg;
-                //             
-                //             break; 
-                //         case 5:
-                //             dialogStr = "Prove it. Finish one of my songs and show me some moves";
-                //             dialogImg = sonicFaceImg;
-                //             
-                //             break; 
-                //         case 6:
-                //             dialogStr = "Ok sonic i'll show you";
-                //             dialogImg = amyFaceImg;
-                //             
-                //             break;
-                //             
-                //     }
-                //
-                //     break;
+
+                break;
 
             }
 
@@ -590,7 +586,7 @@ namespace QHacks2025
             {
                 case MENU:
                     startBtn.DrawButton(spriteBatch, Color.Purple);
-                    spriteBatch.DrawString(titleFont, "Hedgehog Dating Revolution", Vector2.Zero, Color.Red);
+                    spriteBatch.DrawString(titleFont, "Dance Dance Evolution", new Vector2(20,yCord), Color.Red);
                     break;
 
                 case SELECT:
@@ -628,19 +624,19 @@ namespace QHacks2025
                     }
                     amyAnim.Draw(spriteBatch, Color.White, SpriteEffects.None);
                     amyAnim.Draw(spriteBatch, bgColor * 0.65f, SpriteEffects.None);
+
+                    for (int i = 0; i < NUM_COLL; i++)
+                    {
+                        spriteBatch.Draw(collImg, collRects[i], Color.White);
+                        if (i < NUM_COLL - 1) spriteBatch.Draw(collImg, pathRects[i], Color.Gray * 0.25f);
+                    }
                     
-                    spriteBatch.Draw(barImg,collisionRec,Color.White * 0.5f);
+                    spriteBatch.Draw(barImg,collisionRec,Color.White * 0.65f);
                     break;
 
                 case END:
                     backToStartBtn.DrawButton(spriteBatch,Color.Purple);
                     break;
-                
-                case DIALOG:
-                    spriteBatch.Draw(dialogImg,dialogRect,Color.White);
-                    spriteBatch.DrawString(labelFont,dialogStr,dialogPos,Color.White);
-                    break;
-                
             }
 
             spriteBatch.End();
