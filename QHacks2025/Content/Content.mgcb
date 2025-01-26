@@ -13,6 +13,48 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Audio/Dialog/0.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/0.wav
+
+#begin Audio/Dialog/1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/1.wav
+
+#begin Audio/Dialog/2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/2.wav
+
+#begin Audio/Dialog/3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/3.wav
+
+#begin Audio/Dialog/4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/4.wav
+
+#begin Audio/Dialog/5.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/5.wav
+
+#begin Audio/Dialog/6.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/6.wav
+
 #begin Audio/Music/chug_jug.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -183,6 +225,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/Characters/amy.png
 
+#begin Images/Characters/AmyFace.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Characters/AmyFace.png
+
 #begin Images/Characters/DancingGirl/balancing.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -242,6 +296,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/Characters/DancingGirl/snap.png
+
+#begin Images/Characters/SonicFace.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Characters/SonicFace.png
 
 #begin Images/chugjug.jpg
 /importer:TextureImporter
