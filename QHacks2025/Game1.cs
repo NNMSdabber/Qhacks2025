@@ -92,7 +92,7 @@ namespace QHacks2025
         
         public static SpriteFont titleFont;
 
-        private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,15);
+        private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,30);
 
         public KeyboardState kb = new KeyboardState();
         public KeyboardState prevkb = new KeyboardState();
@@ -296,8 +296,6 @@ namespace QHacks2025
             {
                 case MENU:
                     
-
-                    
                     if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
                         MediaPlayer.Stop();
@@ -305,9 +303,7 @@ namespace QHacks2025
                         dialogFxInstance[0].Play();
                         dialogImg = amyFaceImg;
                         gameplayState = DIALOG;
-                        
                     }
-                    
                     bgColor.R += 1;
                     bgColor.G += 2;
                     bgColor.B += 3;
@@ -398,45 +394,87 @@ namespace QHacks2025
                        if(kb.IsKeyDown(W_KEY) && !prevkb.IsKeyDown(W_KEY) && arrow.GetDirection() == UP)
                        {
                            amyAnim.TranslateTo((int)amyPosList[1].X, (int)amyPosList[1].Y);
-                            if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
-                            {
-                                score += 50;
-                                streak++;
-                                arrow.SetIsAvailable(false);
-                            }
+                           if (arrow.GetIsAvailable())
+                           {
+                               if (arrow.GetArrow2Rect().Y > collisionRec.Y && arrow.GetArrow2Rect().Y < collisionRec.Y + collisionRec.Height)
+                               {
+                                   score += 100;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
+                               else if (arrow.GetArrowRect().Intersects(collisionRec))
+                               {
+                                   score += 50;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
+                           }
                             
                        }
                        else if (kb.IsKeyDown(A_KEY) && !prevkb.IsKeyDown(A_KEY) && arrow.GetDirection() == LEFT)
                        {
                            amyAnim.TranslateTo((int)amyPosList[2].X, (int)amyPosList[2].Y);
-                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
-                           {
-                               streak++;
-                               score += 50;
-                               arrow.SetIsAvailable(false);
-                           }
 
+                           if (arrow.GetIsAvailable())
+                           {
+                               if (arrow.GetArrow2Rect().Y > collisionRec.Y && arrow.GetArrow2Rect().Y < collisionRec.Y + collisionRec.Height)
+                               {
+                                   score += 100;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
+                               else if (arrow.GetArrowRect().Intersects(collisionRec))
+                               {
+                                   score += 50;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
+                           }
                         }
                        else if (kb.IsKeyDown(S_KEY) && !prevkb.IsKeyDown(S_KEY) && arrow.GetDirection() == DOWN)
                        {
-                           amyAnim.TranslateTo((int)amyPosList[3].X, (int)amyPosList[3].Y);
-                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
+                           if (arrow.GetIsAvailable())
                            {
-                                streak++;
-                                score += 50;
-                                arrow.SetIsAvailable(false);
+                               if (arrow.GetArrow2Rect().Y > collisionRec.Y && arrow.GetArrow2Rect().Y < collisionRec.Y + collisionRec.Height)
+                               {
+                                   score += 100;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
+                               else if (arrow.GetArrowRect().Intersects(collisionRec))
+                               {
+                                   score += 50;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
                            }
 
                         }
                        else if (kb.IsKeyDown(D_KEY) && !prevkb.IsKeyDown(D_KEY) && arrow.GetDirection() == RIGHT)
                        {
 
-                           amyAnim.TranslateTo((int)amyPosList[4].X, (int)amyPosList[4].Y);
-                           if (arrow.GetArrowRect().Intersects(collisionRec) && arrow.GetIsAvailable() == true)
+                           if (arrow.GetIsAvailable())
                            {
-                               arrow.SetIsAvailable(false);
-                               score += 50;
-                               streak++;
+                               if (arrow.GetArrow2Rect().Y > collisionRec.Y && arrow.GetArrow2Rect().Y < collisionRec.Y + collisionRec.Height)
+                               {
+                                   score += 100;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
+                               else if (arrow.GetArrowRect().Intersects(collisionRec))
+                               {
+                                   score += 50;
+                                   
+                                   streak++;
+                                   arrow.SetIsAvailable(false);
+                               }
                            }
                        }
                        
