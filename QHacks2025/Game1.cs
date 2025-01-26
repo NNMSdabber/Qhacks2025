@@ -83,6 +83,7 @@ namespace QHacks2025
         private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15], new Arrow[5]};
 
         public static SpriteFont labelFont;
+        
         public static SpriteFont titleFont;
 
         private Rectangle collisionRec = new Rectangle(0,SCREEN_HEIGHT-100,SCREEN_WIDTH,15);
