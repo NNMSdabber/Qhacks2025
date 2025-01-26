@@ -13,6 +13,48 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Audio/Dialog/0.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/0.wav
+
+#begin Audio/Dialog/1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/1.wav
+
+#begin Audio/Dialog/2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/2.wav
+
+#begin Audio/Dialog/3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/3.wav
+
+#begin Audio/Dialog/4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/4.wav
+
+#begin Audio/Dialog/5.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/5.wav
+
+#begin Audio/Dialog/6.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Dialog/6.wav
+
 #begin Audio/Music/chug_jug.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
