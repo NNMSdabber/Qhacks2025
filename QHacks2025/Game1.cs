@@ -97,6 +97,7 @@ namespace QHacks2025
 
         private int score = 0;
         private int streak = 0;
+        private int maxStreak = 0;
 
         public MouseState mouse;
         public MouseState mousePrev;
@@ -297,11 +298,11 @@ namespace QHacks2025
                     
                     if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
-                        /*MediaPlayer.Stop();
+                        MediaPlayer.Stop();
                         dialogFxInstance[0] = dialogFx[0].CreateInstance();
                         dialogFxInstance[0].Play();
                         dialogImg = amyFaceImg;
-                        gameplayState = DIALOG;*/
+                        gameplayState = DIALOG;
                         gameplayState = SELECT;
                     }
                     bgColor.R += 1;
@@ -391,6 +392,10 @@ namespace QHacks2025
 
                         if (arrow.GetArrowRect().Y > SCREEN_HEIGHT && arrow.GetIsAvailable() == true)
                         {
+                            if (streak > maxStreak)
+                            {
+                                maxStreak = streak;
+                            }
                             streak = 0;
                         }
                         
@@ -695,7 +700,7 @@ namespace QHacks2025
             levelData[SONIC_LEVEL_DATA_IDX][11] = new Arrow(new Vector2(250, -1000), 7, RIGHT);
 
             levelData[SONIC_LEVEL_DATA_IDX][12] = new Arrow(new Vector2(150, -1250), 7, LEFT);
-            levelData[SONIC_LEVEL_DATA_IDX][13] = new Arrow(new Vector2(150, -1250), 7, RIGHT);
+            levelData[SONIC_LEVEL_DATA_IDX][13] = new Arrow(new Vector2(250, -1250), 7, RIGHT);
             levelData[SONIC_LEVEL_DATA_IDX][14] = new Arrow(new Vector2(50, -1300), 7, DOWN);
 
             levelData[SONIC_LEVEL_DATA_IDX][15] = new Arrow(new Vector2(50, -1400), 7, DOWN);
