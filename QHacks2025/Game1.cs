@@ -747,7 +747,9 @@ namespace QHacks2025
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
+            MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(menuMusic);
+           
             dialogFxInstance = new SoundEffectInstance[7];
         }
 
