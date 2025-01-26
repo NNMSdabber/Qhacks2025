@@ -168,11 +168,11 @@ namespace QHacks2025
             menuMusic = Content.Load<Song>("Audio/Music/geometry");
             MediaPlayer.Play(menuMusic);
 
-            startBtn = new Button(buttonImg, 400, 400, "Start");
+            startBtn = new Button(buttonImg, 600, 350, "Start");
             
-            sonicBtn = new Button(buttonImg, 100, 400, "Windy Hill");
-            icirrusBtn = new Button(buttonImg, 500, 400, "Icirrus City");
-            chugBtn = new Button(buttonImg, 900, 400, "Chug Jug With You");
+            sonicBtn = new Button(buttonImg, 100, 350, "Windy Hill");
+            icirrusBtn = new Button(buttonImg, 500, 350, "Icirrus City");
+            chugBtn = new Button(buttonImg, 900, 350, "Chug Jug");
             backToStartBtn = new Button(buttonImg,500,400,"Press K to return to menu");
             
             amyPosList[0] = new Vector2(gridBgRec.X + 175 ,  gridBgRec.Y + 175);
@@ -541,7 +541,7 @@ namespace QHacks2025
             {
                 case MENU:
                     startBtn.DrawButton(spriteBatch, Color.Purple);
-                    spriteBatch.DrawString(titleFont, "Robt QHacks 2025", Vector2.Zero, Color.Red);
+                    spriteBatch.DrawString(titleFont, "Dance Dance Evolution", new Vector2(20,0), Color.Red);
                     break;
 
                 case SELECT:
