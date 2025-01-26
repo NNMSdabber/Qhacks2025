@@ -26,6 +26,8 @@ namespace QHacks2025
         public const Keys SELECT_KEY = Keys.K;
 
         public const int MAX_ARROWS = 4;
+        public const int NUM_COLL = 5;
+        
         public const int RIGHT = 0;
         public const int LEFT = 1;
         public const int UP = 2;
@@ -79,6 +81,24 @@ namespace QHacks2025
         private LinkedList<Arrow> arrows = new LinkedList<Arrow>();
 
         public static Texture2D barImg;
+        public static Texture2D collImg;
+
+        private Rectangle[] collRects =
+        {
+            new Rectangle(50, 0, 1, SCREEN_HEIGHT), 
+            new Rectangle(150, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(250, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(350, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(450, 0, 1, SCREEN_HEIGHT)
+        };
+        
+        private Rectangle[] pathRects =
+        {
+            new Rectangle(52, 0, 98, SCREEN_HEIGHT), 
+            new Rectangle(152, 0, 98, SCREEN_HEIGHT),
+            new Rectangle(252, 0, 98, SCREEN_HEIGHT),
+            new Rectangle(352, 0, 98, SCREEN_HEIGHT),
+        };
         
         private Arrow[][] levelData = new Arrow[][] { new Arrow[36], new Arrow[15], new Arrow[5]};
 
@@ -202,6 +222,14 @@ namespace QHacks2025
                 TOTAL_FRAMES_MOVE, START_FRAME, IDLE_FRAME, Animation.ANIMATE_FOREVER, ANIM_DURATION_MOVE, amyPos, true);
             amyAnim.Activate(true);
             
+            collImg = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            Color[] data = new Color[1 * 1];
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = Color.White;
+            }
+            collImg.SetData(data);
+            
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
@@ -213,7 +241,11 @@ namespace QHacks2025
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            if (collImg != null)
+            {
+                collImg.Dispose();
+                collImg = null;
+            }
         }
 
         /// <summary>
@@ -232,8 +264,7 @@ namespace QHacks2025
             mouse = Mouse.GetState();
 
             timer.Update(gameTime.ElapsedGameTime.TotalMilliseconds);
-
-            Console.WriteLine(timer.GetTimePassed());
+            
             yCord = (float)(25 * Math.Sin(0.0025*timer.GetTimePassed()));
             
             switch (gameplayState) 
@@ -593,8 +624,14 @@ namespace QHacks2025
                     }
                     amyAnim.Draw(spriteBatch, Color.White, SpriteEffects.None);
                     amyAnim.Draw(spriteBatch, bgColor * 0.65f, SpriteEffects.None);
+
+                    for (int i = 0; i < NUM_COLL; i++)
+                    {
+                        spriteBatch.Draw(collImg, collRects[i], Color.White);
+                        if (i < NUM_COLL - 1) spriteBatch.Draw(collImg, pathRects[i], Color.Gray * 0.25f);
+                    }
                     
-                    spriteBatch.Draw(barImg,collisionRec,Color.White * 0.5f);
+                    spriteBatch.Draw(barImg,collisionRec,Color.White * 0.65f);
                     break;
 
                 case END:
