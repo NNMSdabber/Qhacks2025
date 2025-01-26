@@ -18,6 +18,7 @@ namespace QHacks2025
         private Vector2 arrowPos2;
         private Rectangle arrowRec;
         private Rectangle arrow2Rec;
+        private Rectangle arrow3Rec;
         private float speed;
         private int direction;
         private bool isAvailable;
@@ -47,6 +48,7 @@ namespace QHacks2025
             if (isAvailable)
             {
                 spriteBatch.Draw(Game1.arrowImg[direction], arrowRec, Color.White);
+                spriteBatch.Draw(Game1.collImg, arrow2Rec, Color.White);
             }        
         }
 
