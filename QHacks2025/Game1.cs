@@ -788,7 +788,7 @@ namespace QHacks2025
                         if (i < NUM_COLL - 1) spriteBatch.Draw(collImg, pathRects[i], Color.Gray * 0.25f);
                     }
                     
-                    spriteBatch.Draw(barImg,collisionRec,Color.White * 0.5f);
+                    spriteBatch.Draw(collImg,collisionRec,Color.DarkGray * 0.5f);
                     break;
 
                 case END:
