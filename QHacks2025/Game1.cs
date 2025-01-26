@@ -41,6 +41,8 @@ namespace QHacks2025
         private const int ICIRRUS_LEVEL_DATA_IDX = 1;
         private const int CHUG_JUG_LEVEL_DATA_IDX = 2;
         
+        public const int NUM_COLL = 5;
+        
         private const byte ANIM_COLS_MOVE = 3;
         private const byte ANIM_ROWS_MOVE = 3;
         private const byte TOTAL_FRAMES_MOVE = 9;
@@ -101,6 +103,25 @@ namespace QHacks2025
         private Animation amyAnim;
         
         public static Texture2D buttonImg; 
+        
+        public static Texture2D collImg;
+
+        private Rectangle[] collRects =
+        {
+            new Rectangle(50, 0, 1, SCREEN_HEIGHT), 
+            new Rectangle(150, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(250, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(350, 0, 1, SCREEN_HEIGHT),
+            new Rectangle(450, 0, 1, SCREEN_HEIGHT)
+        };
+        
+        private Rectangle[] pathRects =
+        {
+            new Rectangle(52, 0, 98, SCREEN_HEIGHT), 
+            new Rectangle(152, 0, 98, SCREEN_HEIGHT),
+            new Rectangle(252, 0, 98, SCREEN_HEIGHT),
+            new Rectangle(352, 0, 98, SCREEN_HEIGHT),
+        };
 
         private static Song menuMusic;
         private static Song sonic;
@@ -203,6 +224,14 @@ namespace QHacks2025
                 TOTAL_FRAMES_MOVE, START_FRAME, IDLE_FRAME, Animation.ANIMATE_FOREVER, ANIM_DURATION_MOVE, amyPos, true);
             amyAnim.Activate(true);
             
+            collImg = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            Color[] data = new Color[1 * 1];
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = Color.White;
+            }
+            collImg.SetData(data);
+            
             SetUpSonic();
             SetUpPokemon();
             SetUpChugJug();
@@ -214,7 +243,11 @@ namespace QHacks2025
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            if (collImg != null)
+            {
+                collImg.Dispose();
+                collImg = null;
+            }
         }
 
         /// <summary>
@@ -233,8 +266,7 @@ namespace QHacks2025
             mouse = Mouse.GetState();
 
             timer.Update(gameTime.ElapsedGameTime.TotalMilliseconds);
-
-            Console.WriteLine(timer.GetTimePassed());
+            
             yCord = (float)(25 * Math.Sin(0.0025*timer.GetTimePassed()));
             
             switch (gameplayState) 
@@ -333,7 +365,7 @@ namespace QHacks2025
 
                 case GAME_PLAY:
                     
-                    foreach (Arrow arrow in levelData[(int)currLevel])
+                    foreach (Arrow arrow in levelData[currLevel])
                     {
                         arrow.Update(gameTime);
 
@@ -400,12 +432,9 @@ namespace QHacks2025
                        else if (kb.IsKeyDown(S_KEY))
                        {
                            amyAnim.TranslateTo((int)amyPosList[4].X, (int)amyPosList[4].Y);
-
-
                         }
                        else if (kb.IsKeyDown(D_KEY))
                        {
-
                            amyAnim.TranslateTo((int)amyPosList[3].X, (int)amyPosList[3].Y);
                        }
                        else
@@ -607,12 +636,18 @@ namespace QHacks2025
                     spriteBatch.DrawString(labelFont,"Score: "+score,new Vector2(550,0),Color.Black);
                     spriteBatch.DrawString(labelFont, "Streak:" + streak, new Vector2(950,0), Color.Black);
 
-                    foreach (Arrow arrow in levelData[(int)currLevel])
+                    foreach (Arrow arrow in levelData[currLevel])
                     {
                         arrow.Draw(spriteBatch);
                     }
                     amyAnim.Draw(spriteBatch, Color.White, SpriteEffects.None);
                     amyAnim.Draw(spriteBatch, bgColor * 0.65f, SpriteEffects.None);
+                    
+                    for (int i = 0; i < NUM_COLL; i++)
+                    {
+                        spriteBatch.Draw(collImg, collRects[i], Color.White);
+                        if (i < NUM_COLL - 1) spriteBatch.Draw(collImg, pathRects[i], Color.Gray * 0.25f);
+                    }
                     
                     spriteBatch.Draw(barImg,collisionRec,Color.White * 0.5f);
                     break;
@@ -625,29 +660,6 @@ namespace QHacks2025
             spriteBatch.End();
 
             base.Draw(gameTime);
-        }
-
-
-        //Pre: The mouse button number and the state of the mouse
-        //Post: If the mouse button is pressed
-        //Desc: Checks if a sepcific mouse button is pressed
-        public static bool IsMouseButtonPressed(byte index, MouseState mouse)
-        {
-            //Chooses which mouse button to check based on the index
-            switch (index)
-            {
-                case 0:
-                    //Returns if the left mouse button is pressed
-                    return mouse.LeftButton == ButtonState.Pressed;
-
-                case 1:
-                    //Returns if the right mouse button is pressed
-                    return mouse.RightButton == ButtonState.Pressed;
-
-                default:
-                    //Throws an exception if no valid index was given
-                    throw new EntryPointNotFoundException("Invalid index passed.");
-            }
         }
     }
 }
