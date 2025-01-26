@@ -225,6 +225,18 @@
 /processorParam:TextureFormat=Color
 /build:Images/Characters/amy.png
 
+#begin Images/Characters/AmyFace.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Characters/AmyFace.png
+
 #begin Images/Characters/DancingGirl/balancing.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -284,6 +296,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Images/Characters/DancingGirl/snap.png
+
+#begin Images/Characters/SonicFace.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Characters/SonicFace.png
 
 #begin Images/chugjug.jpg
 /importer:TextureImporter
