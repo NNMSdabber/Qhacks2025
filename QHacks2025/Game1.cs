@@ -548,7 +548,6 @@ namespace QHacks2025
                     }
                     switch (dgNum)
                     {
-                        //TODO: ADD VOICELINES
                         case 0:
                             dialogStr = "Sonic I need to tell you something...";
                             dialogImg = amyFaceImg;
