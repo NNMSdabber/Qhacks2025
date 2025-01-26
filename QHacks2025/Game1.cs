@@ -542,6 +542,10 @@ namespace QHacks2025
                 break;
                 
                 case DIALOG:
+                    if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
+                    {
+                        gameplayState = SELECT;
+                    }
                     switch (dgNum)
                     {
                         //TODO: ADD VOICELINES
