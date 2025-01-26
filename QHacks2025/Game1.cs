@@ -57,6 +57,8 @@ namespace QHacks2025
         private int currLevel = SONIC_LEVEL_DATA_IDX;
         public static Random rng = new Random();
 
+        private float yCord = 10;
+        
         private Button startBtn;
 
         private int curMenuNum = SONIC_LEVEL_DATA_IDX;
@@ -105,6 +107,8 @@ namespace QHacks2025
         private static Song chugJugWithYou;
 
         private Texture2D[] backgrounds = new Texture2D[3];
+
+        private Timer timer = new Timer(Timer.INFINITE_TIMER,true);
 
 
         public Game1()
@@ -168,12 +172,16 @@ namespace QHacks2025
             menuMusic = Content.Load<Song>("Audio/Music/geometry");
             MediaPlayer.Play(menuMusic);
 
+            timer.Activate();
+            
             startBtn = new Button(buttonImg, 600, 350, "Start");
             
             sonicBtn = new Button(buttonImg, 100, 350, "Windy Hill");
             icirrusBtn = new Button(buttonImg, 500, 350, "Icirrus City");
             chugBtn = new Button(buttonImg, 900, 350, "Chug Jug");
             backToStartBtn = new Button(buttonImg,500,400,"Press K to return to menu");
+
+            timer = new Timer(Timer.INFINITE_TIMER,true);
             
             amyPosList[0] = new Vector2(gridBgRec.X + 175 ,  gridBgRec.Y + 175);
             amyPosList[1] = new Vector2(amyPosList[0].X - 200, amyPosList[0].Y);
@@ -223,18 +231,24 @@ namespace QHacks2025
             mousePrev = mouse;
             mouse = Mouse.GetState();
 
+            timer.Update(gameTime.ElapsedGameTime.TotalMilliseconds);
+
+            Console.WriteLine(timer.GetTimePassed());
+            yCord = (float)(25 * Math.Sin(0.0025*timer.GetTimePassed()));
+            
             switch (gameplayState) 
             {
                 case MENU:
                     if (startBtn.rec.Contains(mouse.Position.ToVector2()))
                     {
-                        if(startBtn.CheckIfClicked(mouse, mousePrev))
+                        if (startBtn.CheckIfClicked(mouse, mousePrev))
                         {
                             gameplayState = SELECT;
                             score = 0;
                         }
                     }
 
+                    
                     if (kb.IsKeyDown(SELECT_KEY) && !prevkb.IsKeyDown(SELECT_KEY))
                     {
                         gameplayState = SELECT;
@@ -541,7 +555,7 @@ namespace QHacks2025
             {
                 case MENU:
                     startBtn.DrawButton(spriteBatch, Color.Purple);
-                    spriteBatch.DrawString(titleFont, "Dance Dance Evolution", new Vector2(20,0), Color.Red);
+                    spriteBatch.DrawString(titleFont, "Dance Dance Evolution", new Vector2(20,yCord), Color.Red);
                     break;
 
                 case SELECT:
