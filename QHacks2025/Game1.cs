@@ -537,6 +537,7 @@ namespace QHacks2025
                         SetUpChugJug();
                     }
 
+                    
                     if(MediaPlayer.State != MediaState.Playing)
                     {
                         if (highStreak >= 6)
